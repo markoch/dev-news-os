@@ -1,5 +1,5 @@
 {
-  "name": "NodejsStarterApp",
+  "name": "JavaScriptNews",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -7,14 +7,13 @@
     "test": "./node_modules/jshint/bin/jshint app.js"
   },
   "dependencies": {
-    "express": "4.13.x",
-    "cfenv": "1.0.x"
+    "express": "4.13.x"
   },
   "repository": {},
   "engines": {
     "node": "4.x"
   },
   "devDependencies": {
-    "jshint": "^2.9.2"
+    "jshint": "2.9.x"
   }
 }
