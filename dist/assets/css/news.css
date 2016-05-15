@@ -1,0 +1,59 @@
+
+.headline-posts-sections {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.info {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  padding: 10px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+.main-section-space {
+  padding-top: 40px;
+  padding-bottom: 30px;
+}
+
+.profile-background .filter-red::after {
+  background-color: rgba(205, 71, 19, 0.);
+  content: "";
+  display: block;
+  height: 300px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+a {
+  color: #66615D;
+  -webkit-transition: all 150ms linear;
+  -moz-transition: all 150ms linear;
+  -o-transition: all 150ms linear;
+  -ms-transition: all 150ms linear;
+  transition: all 150ms linear;
+}
+a:hover, a:focus {
+  color: #EB5E26;
+  text-decoration: none;
+}
+.follows hr {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.badge {
+  height: 48px;
+  width: 48px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 50%;
+  background: #66615D;
+  color: white;
+  font-size: 75%;
+}
