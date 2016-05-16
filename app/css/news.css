@@ -1,4 +1,11 @@
 
+.section {
+    padding: 0px;
+    position: relative;
+    background-color: #f4f3ef;
+    background-image: linear-gradient(to bottom,transparent 0,rgba(112,112,112,0) 60%,rgba(186,186,186,.15) 100%);
+}
+
 .headline-posts-sections {
     padding-left: 25px;
     padding-right: 25px;
@@ -16,6 +23,10 @@
 .main-section-space {
   /*padding-top: 40px;
   padding-bottom: 30px;*/
+}
+
+.landing-section {
+    padding: 0 0 3% 0;
 }
 
 .profile-background .filter-red::after {
