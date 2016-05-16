@@ -32,7 +32,7 @@ angular.module('javascriptNews', ['ui.router','ngResource'])
                 }
             })
 
-            // route for the aboutus page
+            // route for the changes page
             .state('app.changes', {
                 url:'changes',
                 views: {

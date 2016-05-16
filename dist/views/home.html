@@ -1,41 +1,24 @@
-<div class="wrapper">
+<div class="wrapper" ng-controller="IndexController">
+
     <div class="section headline-posts-sections">
         <div class="row details-row">
-            <div class="col-md-4 col-sm-4">
-                <div class="info ">
-                    <div class="icon">
-                        <i class="fa fa-history"></i>
-                    </div>
-                    <div class="description">
-                        <h4> Let’s Learn JavaScript Closures </h4>
-                        <p>Closures are a fundamental JavaScript concept that every serious programmer should know inside-out. The Internet is packed with great explanations of “what” closures are, but few deep-dives into the “why” side of things.</p>
-                    </div>
-                </div>
+            <div ng-if="!showHeadline">
+                <h3>{{headlineMessage}}</h3>
             </div>
-            <div class="col-md-4 col-sm-4">
+            <div class="col-md-4 col-sm-4" ng-repeat="headline in headlines" ng-if="showHeadline">
                 <div class="info">
                     <div class="icon">
-                        <i class="fa fa-book"></i>
+                        <i class="fa {{headline.image}}"></i>
                     </div>
                     <div class="description">
-                        <h4> The Most Useful Free eBooks for Web Developers </h4>
-                        <p>This is a collection of free ebooks for the front-end developers about JavaScript, ES6, NodeJS, CSS3 and HTML5.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <div class="info">
-                    <div class="icon">
-                        <i class="fa fa-users"></i>
-                    </div>
-                    <div class="description">
-                        <h4> 10 Most Recommended JavaScript Scene Articles of 2015 </h4>
-                        <p>2015 was our first full year serving the JavaScript community, and I’m very happy with the response. We started at zero in the middle of 2014. Today, thousands of readers share our articles every month.</p>
+                        <h4><a href="{{headline.url}}">{{headline.title}}</a></h4>
+                        <p>{{headline.summary}}</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="profile-content section-nude">
         <div class="container">
             <div class="profile-tabs main-section-space">
@@ -49,96 +32,46 @@
                         </ul>
                     </div>
                 </div>
+
                 <div id="my-tab-content" class="tab-content">
                     <div class="tab-pane active" id="follows">
                         <div class="row">
                             <div class="col-md-7">
+                               <div ng-if="!showArticles">
+                                    <h3>{{articleMessage}}</h3>
+                                </div>
                                 <ul class="list-unstyled follows">
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-md-2 col-xs-2">
-                                                <center><h5><div class="badge">PK</div></h5></center>
+                                    <div ng-repeat="article in articles" ng-if="showArticles">
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-md-2 col-xs-2">
+                                                    <h5><div class="badge text-center">{{article.acronym}}</div></h5>
+                                                </div>
+                                                <div class="col-md-10 col-xs-10">
+                                                    <h5><a class="article-link" href="{{article.url}}">{{article.title}}</a><br />
+                                                        <small>{{article.author}} - {{article.publish}}</small>
+                                                    </h5>
+                                                    <i class="fa fa-heart"></i> {{article.counter}}
+                                                </div>
                                             </div>
-                                            <div class="col-md-10 col-xs-10">
-                                                <h5><a class="article-link" href="#">Let’s Learn JavaScript Closures</a><br />
-                                                    <small>Preethi Kasireddy - April 29</small>
-                                                </h5>
-                                                <i class="fa fa-heart"></i> 4
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <hr />
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-md-2 col-xs-2">
-                                                <center><h5><div class="badge">M</div></h5></center>
-                                            </div>
-                                            <div class="col-md-10 col-xs-10">
-                                                <h5><a href="#">The Most Useful Free eBooks for Web Developers</a><br />
-                                                    <small>Mybridge - April 28</small>
-                                                </h5>
-                                                <i class="fa fa-heart"></i> 4
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <hr />
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-md-2 col-xs-2">
-                                                <center><h5><div class="badge">EE</div></h5></center>
-                                            </div>
-                                            <div class="col-md-10 col-xs-10">
-                                                <h5><a href="#">10 Most Recommended JavaScript Scene Articles of 2015</a><br />
-                                                    <small>Eric Elliott - Jan 2</small>
-                                                </h5>
-                                                <i class="fa fa-heart"></i> 4
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <hr />
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-md-2 col-xs-2">
-                                                <center><h5><div class="badge">GS</div></h5></center>
-                                            </div>
-                                            <div class="col-md-10 col-xs-10">
-                                                <h5><a href="#">How your Gruntfile.js should look like, the born of rapid Grunt</a><br />
-                                                    <small>Gyorgy Sagi - April 11</small>
-                                                </h5>
-                                                <i class="fa fa-heart"></i> 4
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <hr />
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-md-2 col-xs-2">
-                                                <center><h5><div class="badge">EE</div></h5></center>
-                                            </div>
-                                            <div class="col-md-10 col-xs-10">
-                                                <h5><a href="#">10 Most Recommended JavaScript Scene Articles of 2015</a><br />
-                                                    <small>Eric Elliott - Jan 2</small>
-                                                </h5>
-                                                <i class="fa fa-heart"></i> 4
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <hr />
+                                        </li>
+                                        <hr />
+                                    </div>
                                 </ul>
-                            </div><!-- left side-->
+                            </div>
                             <div class="col-md-4 col-md-offset-1">
-                                <div class="card-big-shadow">
+                                <div class="card-big-shadow" ng-if="showBestArticles">
                                     <div class="card" data-background="green" data-color="green" data-radius="none">
                                         <div class="content">
                                             <h6 class="category">Best stories</h6>
-                                            <h5 class="title"><a href="#">Let’s Learn JavaScript Closures</a></h5>
-                                            <h5 class="title"><a href="#">The Most Useful Free eBooks for Web Developers</a></h5>
-                                            <h5 class="title"><a href="#">10 Most Recommended JavaScript Scene Articles of 2015</a></h5>
+                                            <h5 class="title" ng-repeat="article in bestArticles">
+                                                <a href="{{article.url}}">{{article.title}}</a>
+                                            </h5>
                                         </div>
                                     </div> <!-- end card -->
                                 </div>
                             </div>
-                        </div> <!-- row -->
+                        </div><!-- row end-->
                     </div>
 
                     <div class="tab-pane" id="podcasts">
@@ -197,13 +130,13 @@
                                         </ul>
                                     </div><!-- left side-->
                                     <div class="col-md-4 col-md-offset-1">
-                                        <div class="card-big-shadow">
+                                        <div class="card-big-shadow" ng-if="showBestArticles">
                                             <div class="card" data-background="green" data-color="green" data-radius="none">
                                                 <div class="content">
                                                     <h6 class="category">Best stories</h6>
-                                                    <h5 class="title"><a href="#">Let’s Learn JavaScript Closures</a></h5>
-                                                    <h5 class="title"><a href="#">The Most Useful Free eBooks for Web Developers</a></h5>
-                                                    <h5 class="title"><a href="#">10 Most Recommended JavaScript Scene Articles of 2015</a></h5>
+                                                    <h5 class="title" ng-repeat="article in bestArticles">
+                                                        <a href="{{article.url}}">{{article.title}}</a>
+                                                    </h5>
                                                 </div>
                                             </div> <!-- end card -->
                                         </div>
@@ -238,13 +171,13 @@
                                 </ul>
                             </div><!-- left side-->
                             <div class="col-md-4 col-md-offset-1">
-                                <div class="card-big-shadow text-left">
+                                <div class="card-big-shadow text-left" ng-if="showBestArticles">
                                     <div class="card" data-background="green" data-color="green" data-radius="none">
                                         <div class="content">
                                             <h6 class="category">Best stories</h6>
-                                            <h5 class="title"><a href="#">Let’s Learn JavaScript Closures</a></h5>
-                                            <h5 class="title"><a href="#">The Most Useful Free eBooks for Web Developers</a></h5>
-                                            <h5 class="title"><a href="#">10 Most Recommended JavaScript Scene Articles of 2015</a></h5>
+                                            <h5 class="title" ng-repeat="article in bestArticles">
+                                                <a href="{{article.url}}">{{article.title}}</a>
+                                            </h5>
                                         </div>
                                     </div> <!-- end card -->
                                 </div>

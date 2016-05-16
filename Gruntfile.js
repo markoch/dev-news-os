@@ -119,7 +119,7 @@ module.exports = function (grunt) {
             tasks: [ 'build' ]
         },
         scripts: {
-            files: ['app/scripts/app.js'],
+            files: ['app/scripts/app.js', 'app/scripts/controllers.js', 'app/scripts/services.js'],
             tasks:[ 'build']
         },
         styles: {
