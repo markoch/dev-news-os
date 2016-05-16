@@ -50,14 +50,14 @@ module.exports = function (grunt) {
     cssmin: {
         minify: {
             expand: true,
-            cwd: 'dist/assets/css/',
+            cwd: 'dist/css',
             src: ['*.css', '!*.min.css'],
-            dest: 'dist/assets/css/',
+            dest: 'dist/css',
             ext: '.min.css'
         },
         target: {
             files: {
-                'dist/assets/css/news.min.css': ['app/assets/css/ct-paper.css', 'app/assets/css/demo.css', 'app/assets/css/examples.css', 'app/assets/css/news.css']
+                'dist/css/news.min.css': ['app/css/ct-paper.css', 'app/css/demo.css', 'app/css/examples.css', 'app/css/news.css']
             }
         },
         dist: {}
@@ -71,11 +71,11 @@ module.exports = function (grunt) {
             'dist/*.html'
         ],
         css: [
-            'dist/assets/css/*.css',
+            'dist/css/*.css',
             'dist/bootstrap3/css/*.css'
         ],
         options: {
-            assetsDirs: ['dist', 'dist/assets/css', 'dist/assets/js']
+            assetsDirs: ['dist', 'dist/css', 'dist/js']
         }
     },
     copy: {
@@ -83,10 +83,10 @@ module.exports = function (grunt) {
         cwd: 'app',
         src: [
             '**',
-            '!app/assets/css/ct-paper.css',
-            '!app/assets/css/demo.css',
-            '!app/assets/css/examples.css',
-            '!app/assets/css/news.css',
+            '!css/ct-paper.css',
+            '!css/demo.css',
+            '!css/examples.css',
+            '!css/news.css',
             '!**/config.codekit',
             '!**/.DS_Store'
         ],
@@ -123,7 +123,7 @@ module.exports = function (grunt) {
             tasks:[ 'build']
         },
         styles: {
-            files: ['app/styles/mystyles.css'],
+            files: ['app/css/news.css'],
             tasks:['build']
         },
         livereload: {

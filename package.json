@@ -8,7 +8,7 @@
 
   "scripts": {
     "start": "node app.js",
-    "test":  "./node_modules/jshint/bin/jshint app.js"
+    "test":  "./node_modules/jshint/bin/jshint app.js app/scripts/*.js"
   },
 
   "dependencies": {
