@@ -2,7 +2,9 @@
 
 module.exports = function(app) {
 
-  // Insert routes below
-  app.use('/api/foo', require('./api/articles'));
+    app.use('/api/v1/articles', require('./api/articles'));
+    app.use('/api/v1/headlines', require('./api/headlines'));
+    app.use('/api/v1/podcasts', require('./api/podcasts'));
+    app.use('/api/v1/videos', require('./api/videos'));
 
 };

@@ -9,11 +9,11 @@
 
 'use strict';
 
-var Articles = require('./article.model');
+var Headlines = require('./headlines.model');
 
 // Get list of things
 exports.index = function(req, res) {
-    var articles = [
+    var headlines = [
     {
         'title': 'Let’s Learn JavaScript Closures',
         'author': 'Preethi Kasireddy',
@@ -61,24 +61,8 @@ exports.index = function(req, res) {
         'label': '',
         'image': 'fa-users',
         'isHeadline': true
-    },
-    {
-        'title': 'How your Gruntfile.js should look like, the born of rapid Grunt',
-        'author': 'Gyorgy Sagi',
-        'acronym': 'GS',
-        'publish': 'April 11, 2016',
-        'summary': 'I have been using Grunt since almost two years, and it always saved me a lot of time. I use it especially for combining, minifying, compiling files, but also worked well for almost every frontend development purposes, when a task should ran repeatedly. That is why it is called as automated task runner.',
-        'content': '',
-        'url': 'http://blog.w5labs.com/how-your-gruntfile-should-look-like-the-born-of-rapid-grunt/',
-        'tags': 'Task Runner',
-        'category': 'article',
-        'counter': 1,
-        'likes': 0,
-        'label': '',
-        'image': '',
-        'isHeadline': false
     }
     ];
 
-    return res.status(200).json(articles);
+    return res.status(200).json(headlines);
 };

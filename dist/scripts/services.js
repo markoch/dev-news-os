@@ -1,22 +1,28 @@
 'use strict';
 
 angular.module('javascriptNews')
-    .constant('baseURL', 'http://localhost:3000/')
 
-    .service('indexFactory', ['$resource', 'baseURL', function($resource, baseURL) {
+    .service('indexFactory', ['$resource', function($resource) {
 
         this.getHeadlines = function() {
-            return $resource(baseURL + 'headlines', null);
+            return $resource('/api/v1/headlines', null);
         };
 
         this.getBestArticles = function() {
-            return $resource(baseURL + 'headlines', null);
+            return $resource('/api/v1/headlines', null);
         };
 
         this.getArticles = function() {
-            return $resource(baseURL + 'articles', null);
+            return $resource('/api/v1/articles', null);
         };
 
+        this.getPodcasts = function() {
+            return $resource('/api/v1/podcasts', null);
+        };
+
+        this.getVideos = function() {
+            return $resource('/api/v1/videos', null);
+        };
     }])
 
 ;

@@ -1,15 +1,19 @@
 'use strict';
 
-angular.module('javascriptNews')
-
+angular
+    .module('javascriptNews')
     .controller('IndexController', ['$scope', 'indexFactory', function($scope, indexFactory) {
         $scope.headlineMessage    = 'Loading ...';
         $scope.bestArticleMessage = 'Loading ...';
         $scope.articleMessage     = 'Loading ...';
+        $scope.podcastMessage     = 'Loading ...';
+        $scope.videoMessage       = 'Loading ...';
 
         $scope.showHeadline     = false;
         $scope.showBestArticles = false;
         $scope.showArticles     = false;
+        $scope.showPodcasts     = false;
+        $scope.showVideos       = false;
 
         $scope.headlines = indexFactory.getHeadlines().query(
             function(response){
@@ -40,6 +44,27 @@ angular.module('javascriptNews')
                 $scope.articleMessage = 'Error: ' + response.status + ' ' + response.statusText;
             }
         );
+
+        $scope.podcasts = indexFactory.getPodcasts().query(
+            function(response){
+                $scope.podcasts = response;
+                $scope.showPodcasts = true;
+            },
+            function(response) {
+                $scope.podcastMessage = 'Error: ' + response.status + ' ' + response.statusText;
+            }
+        );
+
+        $scope.videos = indexFactory.getVideos().query(
+            function(response){
+                $scope.videos = response;
+                $scope.showVideos = true;
+            },
+            function(response) {
+                $scope.videoMessage = 'Error: ' + response.status + ' ' + response.statusText;
+            }
+        );
+
     }])
 
     .controller('AboutController', ['$scope', function($scope) {
