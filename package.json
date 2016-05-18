@@ -5,22 +5,18 @@
   "homepage": "https://github.com/markoch/dev-news-os",
   "license": "MIT",
   "private": true,
-
   "scripts": {
     "start": "node app.js",
     "test": "./node_modules/jshint/bin/jshint app.js app/scripts/*.js server/*.js"
   },
-
   "dependencies": {
     "compression": "1.6.x",
     "express": "4.13.x"
   },
-
   "repository": {},
   "engines": {
     "node": "4.x"
   },
-
   "devDependencies": {
     "grunt": "^1.0.1",
     "grunt-contrib-clean": "^1.0.0",
