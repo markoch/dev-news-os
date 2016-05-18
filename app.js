@@ -11,11 +11,7 @@ var app = express();
 require('./server/config/express')(app);
 require('./server/routes')(app);
 
-// serve the files out of ./public as our main files
-app.use(express.static(__dirname + '/dist'));
-
-// start server on the specified port and binding host
+// Start server on the specified port and binding host
 app.listen(server_port, server_ip_address, function () {
-  // print a message when the server starts listening
   console.log( 'Listening on ' + server_ip_address + ', server_port ' + server_port );
 });
