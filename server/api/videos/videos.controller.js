@@ -9,7 +9,7 @@
 
 'use strict';
 
-var Headlines = require('./videos.model');
+var Videos = require('./videos.model');
 
 // Get list of things
 exports.index = function(req, res) {
