@@ -109,6 +109,13 @@ module.exports = function (grunt) {
                     cwd: 'bower_components/font-awesome',
                     src: ['fonts/*.*'],
                     dest: 'dist'
+                }, {
+                    //for font-awesome
+                    expand: true,
+                    dot: true,
+                    cwd: 'bower_components/themify-icons',
+                    src: ['fonts/*.*'],
+                    dest: 'dist'
                 }
           ]
         }

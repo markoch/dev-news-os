@@ -20,6 +20,8 @@
     "angular-resource": "^1.5.5",
     "bootstrap": "^3.3.6",
     "fontawesome": "latest",
-    "angular-route": "^1.5.5"
+    "angular-route": "^1.5.5",
+    "themify": "^0.1.0",
+    "themify-icons": "^0.1.2"
   }
 }
