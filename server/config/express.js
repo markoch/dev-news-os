@@ -15,7 +15,7 @@ module.exports = function(app) {
     app.use(cookieParser());
 
     // serve the files out of ./dist as our main files
-    app.use(express.static(__dirname + '/../../dist'));
+    app.use(express.static(__dirname + '/../../dist', { maxAge: '1d' }));
 
     if ('development' === env || 'test' === env) {
         app.use(morgan('dev'));
