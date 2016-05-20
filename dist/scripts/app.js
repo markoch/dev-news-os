@@ -1,12 +1,5 @@
 'use strict';
 
-var __env = {};
-
-// Import variables if present (from env.js)
-if(window){
-  Object.assign(__env, window.__env);
-}
-
 angular.module('javascriptNews', ['ui.router','ngResource'])
 .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
