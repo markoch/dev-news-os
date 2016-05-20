@@ -3,11 +3,11 @@
 angular
     .module('javascriptNews')
     .controller('IndexController', ['$scope', '$sce', 'indexFactory', function($scope, $sce, indexFactory) {
-        $scope.headlineMessage    = 'Loading ...';
-        $scope.bestArticleMessage = 'Loading ...';
-        $scope.articleMessage     = 'Loading ...';
-        $scope.podcastMessage     = 'Loading ...';
-        $scope.videoMessage       = 'Loading ...';
+        $scope.headlineMessage    = ''; //Loading ...
+        $scope.bestArticleMessage = '';
+        $scope.articleMessage     = '';
+        $scope.podcastMessage     = '';
+        $scope.videoMessage       = '';
 
         $scope.showHeadline     = false;
         $scope.showBestArticles = false;
