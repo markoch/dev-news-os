@@ -77,15 +77,20 @@
                     <div class="tab-pane" id="podcasts">
                         <div class="row">
                             <div class="col-md-7">
+                                <div ng-if="!showPodcasts">
+                                    <h3>{{articleMessage}}</h3>
+                                </div>
                                 <ul class="list-unstyled follows">
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-md-2 col-xs-2">
-                                                <center><h5><div class="badge">EE</div></h5></center>
-                                            </div>
-                                            <div class="col-md-10 col-xs-10">
-                                                <h5>Interview with Eric Elliott: On JavaScript, Writing, and Creating High Velocity Development Teams<br />
-                                                    <small>Eric Elliott - September 14, 2015 <a href="#"><i class="fa fa-microphone"></i> DeveloperTea</a></small></h5>
+                                    <div ng-repeat="podcast in podcasts" ng-if="showPodcasts">
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-md-2 col-xs-2">
+                                                    <center><h5><div class="badge">{{podcast.acronym}}</div></h5></center>
+                                                </div>
+                                                <div class="col-md-10 col-xs-10">
+                                                    <h5><a class="article-link" href="{{podcast.url}}">{{podcast.title}}</a><br />
+                                                        <small>{{podcast.author}} - {{podcast.publish}} <a href="{{podcast.publisherURL}}"><i class="fa fa-microphone"></i> {{podcast.publisher}}</a></small>
+                                                    </h5>
                                                     <audio preload="none" controls>
                                                         <source src="http://audio.simplecast.com/17181.mp3" type="audio/mpeg"/>
                                                         <p>This player is only available in HTML5 enabled browsers. Please update your browser </p>
@@ -94,75 +99,43 @@
                                             </div>
                                         </li>
                                         <hr />
-                                        <li>
-                                            <div class="row">
-                                                <div class="col-md-2 col-xs-2">
-                                                    <center><h5><div class="badge">DT</div></h5></center>
-                                                </div>
-                                                <div class="col-md-10 col-xs-10">
-                                                    <h5>Refactoring Based on Code Responsibility<br />
-                                                        <small>April 20, 2016 <a href="#"><i class="fa fa-microphone"></i> DeveloperTea</a></small></h5>
-                                                        <audio preload="none" controls>
-                                                            <source src="http://audio.simplecast.com/35739.mp3" type="audio/mpeg"/>
-                                                            <p>This player is only available in HTML5 enabled browsers. Please update your browser </p>
-                                                        </audio>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <hr />
-                                            <li>
-                                                <div class="row">
-                                                    <div class="col-md-2 col-xs-2">
-                                                        <center><h5><div class="badge">JJ</div></h5></center>
-                                                    </div>
-                                                    <div class="col-md-10 col-xs-10">
-                                                        <h5>The 80/20 Guide to ES2015 Generators<br />
-                                                            <small>May 4, 2016 <a href="#"><i class="fa fa-microphone"></i> JavaScript Jabber</a></small>
-                                                        </h5>
-                                                        <audio preload="none" controls>
-                                                            <source src="https://media.devchat.tv/js-jabber/JSJ210Generators.mp3?rss=true?player=true" type="audio/mpeg"/>
-                                                            <p>This player is only available in HTML5 enabled browsers. Please update your browser </p>
-                                                        </audio>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <hr />
-                                        </ul>
-                                    </div><!-- left side-->
-                                    <div class="col-md-4 col-md-offset-1">
-                                        <div class="card-big-shadow" ng-if="showBestArticles">
-                                            <div class="card" data-background="green" data-color="green" data-radius="none">
-                                                <div class="content">
-                                                    <h6 class="category">Best stories</h6>
-                                                    <h5 class="title" ng-repeat="article in bestArticles">
-                                                        <a href="{{article.url}}">{{article.title}}</a>
-                                                    </h5>
-                                                </div>
-                                            </div> <!-- end card -->
-                                        </div>
                                     </div>
-                                </div> <!-- row -->
+                                </ul>
                             </div>
+                            <div class="col-md-4 col-md-offset-1">
+                                <div class="card-big-shadow" ng-if="showBestArticles">
+                                    <div class="card" data-background="green" data-color="green" data-radius="none">
+                                        <div class="content">
+                                            <h6 class="category">Best stories</h6>
+                                            <h5 class="title" ng-repeat="article in bestArticles">
+                                                <a href="{{article.url}}">{{article.title}}</a>
+                                            </h5>
+                                        </div>
+                                    </div> <!-- end card -->
+                                </div>
+                            </div>
+                        </div> <!-- row -->
+                    </div>
 
-                            <div class="tab-pane text-center" id="videos">
-                                <div class="row">
-                                    <div class="col-md-7">
-                                        <ul class="list-unstyled follows">
-                                            <li>
-                                                <div class="row">
-                                                    <div class="col-md-12 col-xs-12">
-                                                        <iframe width="420" height="315"
-                                                        src="https://www.youtube-nocookie.com/v/rhV6hlL_wMc?rel=0" frameborder="0">
-                                                    </iframe>
-                                                </div>
+                    <div class="tab-pane text-center" id="videos">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <ul class="list-unstyled follows">
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-12 col-xs-12">
+                                                <iframe width="420" height="315"
+                                                src="https://www.youtube-nocookie.com/v/rhV6hlL_wMc?rel=0" frameborder="0">
+                                                </iframe>
                                             </div>
-                                        </li>
-                                        <hr />
-                                        <li>
-                                            <div class="row">
-                                                <div class="col-md-12 col-xs-12">
-                                                    <iframe width="420" height="315"
-                                                    src="https://www.youtube-nocookie.com/v/lKCCZTUx0sI?rel=0" frameborder="0">
+                                        </div>
+                                    </li>
+                                    <hr />
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-md-12 col-xs-12">
+                                                <iframe width="420" height="315"
+                                                src="https://www.youtube-nocookie.com/v/lKCCZTUx0sI?rel=0" frameborder="0">
                                                 </iframe>
                                             </div>
                                         </div>
@@ -183,7 +156,6 @@
                                 </div>
                             </div>
                         </div> <!-- row -->
-
                     </div>
                 </div>
             </div>
