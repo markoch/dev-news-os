@@ -78,7 +78,7 @@
                         <div class="row">
                             <div class="col-md-7">
                                 <div ng-if="!showPodcasts">
-                                    <h3>{{articleMessage}}</h3>
+                                    <h3>{{podcastMessage}}</h3>
                                 </div>
                                 <ul class="list-unstyled follows">
                                     <div ng-repeat="podcast in podcasts" ng-if="showPodcasts">
@@ -91,10 +91,13 @@
                                                     <h5><a class="article-link" href="{{podcast.url}}">{{podcast.title}}</a><br />
                                                         <small>{{podcast.author}} - {{podcast.publish}} <a href="{{podcast.publisherURL}}"><i class="fa fa-microphone"></i> {{podcast.publisher}}</a></small>
                                                     </h5>
-                                                    <audio preload="none" controls>
-                                                        <source src="http://audio.simplecast.com/17181.mp3" type="audio/mpeg"/>
-                                                        <p>This player is only available in HTML5 enabled browsers. Please update your browser </p>
-                                                    </audio>
+                                                    <i class="fa fa-heart"></i> {{podcast.counter}}
+                                                    <div class="podcast-section">
+                                                        <audio preload="none" controls>
+                                                            <source src="http://audio.simplecast.com/17181.mp3" type="audio/mpeg"/>
+                                                            This player is only available in HTML5 enabled browsers. Please update your browser
+                                                        </audio>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </li>
@@ -117,30 +120,34 @@
                         </div> <!-- row -->
                     </div>
 
-                    <div class="tab-pane text-center" id="videos">
+                    <div class="tab-pane text-left" id="videos">
                         <div class="row">
                             <div class="col-md-7">
+                                <div ng-if="!showVideos">
+                                    <h3>{{videoMessage}}</h3>
+                                </div>
                                 <ul class="list-unstyled follows">
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-md-12 col-xs-12">
-                                                <iframe width="420" height="315"
-                                                src="https://www.youtube-nocookie.com/v/rhV6hlL_wMc?rel=0" frameborder="0">
-                                                </iframe>
+                                    <div ng-repeat="video in videos" ng-if="showVideos">
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-md-2 col-xs-2">
+                                                    <center><h5><div class="badge">{{video.acronym}}</div></h5></center>
+                                                </div>
+                                                <div class="col-md-10 col-xs-10">
+                                                    <h5><a class="article-link" href="{{video.url}}">{{video.title}}</a><br />
+                                                        <small>{{video.author}}</small>
+                                                    </h5>
+                                                    <i class="fa fa-heart"></i> {{video.counter}}
+                                                    <p>
+                                                        <div class="embed-responsive embed-responsive-16by9">
+                                                            <youtube-video video-url="video.dataURL"></youtube-video>
+                                                        </div>
+                                                    </p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                    <hr />
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-md-12 col-xs-12">
-                                                <iframe width="420" height="315"
-                                                src="https://www.youtube-nocookie.com/v/lKCCZTUx0sI?rel=0" frameborder="0">
-                                                </iframe>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <hr />
+                                        </li>
+                                        <hr />
+                                    </div>
                                 </ul>
                             </div><!-- left side-->
                             <div class="col-md-4 col-md-offset-1">

@@ -29,6 +29,11 @@
     padding: 0 0 3% 0;
 }
 
+.podcast-section {
+  padding-bottom: 0;
+  margin-top: 16px;
+}
+
 .profile-background .filter-red::after {
   background-color: rgba(205, 71, 19, 0.);
   content: "";

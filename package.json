@@ -10,6 +10,7 @@
     "test": "./node_modules/jshint/bin/jshint app.js app/scripts/*.js server/*.js"
   },
   "dependencies": {
+    "angular-youtube-embed": "^1.2.0",
     "body-parser": "1.15.x",
     "compression": "1.6.x",
     "cookie-parser": "1.4.x",

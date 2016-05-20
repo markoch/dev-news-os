@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('javascriptNews', ['ui.router','ngResource'])
+angular.module('javascriptNews', ['ui.router','ngResource', 'youtube-embed'])
 .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
 
