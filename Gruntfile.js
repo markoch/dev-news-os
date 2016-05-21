@@ -83,6 +83,7 @@ module.exports = function (grunt) {
         cwd: 'app',
         src: [
             '**',
+            '!img/favicon/**',
             '!css/ct-paper.css',
             '!css/demo.css',
             '!css/examples.css',
