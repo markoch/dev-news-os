@@ -2,7 +2,7 @@
 
 angular
     .module('javascriptNews')
-    .controller('IndexController', ['$scope', '$sce', 'indexFactory', function($scope, $sce, indexFactory) {
+    .controller('IndexController', ['$scope', 'indexFactory', function($scope, indexFactory) {
         $scope.headlineMessage    = ''; //Loading ...
         $scope.bestArticleMessage = '';
         $scope.articleMessage     = '';
