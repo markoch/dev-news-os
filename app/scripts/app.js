@@ -1,6 +1,9 @@
 'use strict';
 
 angular.module('javascriptNews', ['ui.router','ngResource', 'youtube-embed'])
+// .config(['$compileProvider', function ($compileProvider) {
+//   $compileProvider.debugInfoEnabled(false);
+// }])
 .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
 
