@@ -11,7 +11,7 @@
                         <i class="fa {{headline.image}}"></i>
                     </div>
                     <div class="description">
-                        <h4><a href="{{headline.url}}">{{headline.title}}</a></h4>
+                        <h4><a ng-href="{{headline.url}}">{{headline.title}}</a></h4>
                         <p>{{headline.summary}}</p>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                                                     <h5><div class="badge text-center">{{article.acronym}}</div></h5>
                                                 </div>
                                                 <div class="col-md-10 col-xs-10">
-                                                    <h5><a class="article-link" href="{{article.url}}">{{article.title}}</a><br />
+                                                    <h5><a class="article-link" ng-href="{{article.url}}">{{article.title}}</a><br />
                                                         <small>{{article.author}} - {{article.publish}}</small>
                                                     </h5>
                                                     <i class="fa fa-heart"></i> {{article.counter}}
@@ -88,7 +88,7 @@
                                                     <center><h5><div class="badge">{{podcast.acronym}}</div></h5></center>
                                                 </div>
                                                 <div class="col-md-10 col-xs-10">
-                                                    <h5><a class="article-link" href="{{podcast.url}}">{{podcast.title}}</a><br />
+                                                    <h5><a class="article-link" ng-href="{{podcast.url}}">{{podcast.title}}</a><br />
                                                         <small>{{podcast.author}} - {{podcast.publish}} <a href="{{podcast.publisherURL}}"><i class="fa fa-microphone"></i> {{podcast.publisher}}</a></small>
                                                     </h5>
                                                     <i class="fa fa-heart"></i> {{podcast.counter}}
@@ -134,7 +134,7 @@
                                                     <center><h5><div class="badge">{{video.acronym}}</div></h5></center>
                                                 </div>
                                                 <div class="col-md-10 col-xs-10">
-                                                    <h5><a class="article-link" href="{{video.url}}">{{video.title}}</a><br />
+                                                    <h5><a class="article-link" ng-href="{{video.url}}">{{video.title}}</a><br />
                                                         <small>{{video.author}}</small>
                                                     </h5>
                                                     <i class="fa fa-heart"></i> {{video.counter}}
