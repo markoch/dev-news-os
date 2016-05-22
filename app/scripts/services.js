@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('javascriptNews')
-
+angular
+    .module('javascriptNews')
     .service('indexFactory', ['$resource', function($resource) {
 
         this.getHeadlines = function() {

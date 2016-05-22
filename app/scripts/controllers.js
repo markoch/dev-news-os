@@ -70,4 +70,8 @@ angular
     .controller('AboutController', ['$scope', function($scope) {
         $scope.test = 'foo';
     }])
+
+    .controller('ChangeController', ['$scope', function($scope) {
+        $scope.test = 'foo';
+    }])
 ;
