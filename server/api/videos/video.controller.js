@@ -9,24 +9,24 @@
 
 'use strict';
 
-var Articles = require('./article.model');
+var Videos = require('./video.model');
 
 function handleError(res, err) {
   return res.status(500).send(err);
 }
 
-// Get list of articles
+// Get list of videos
 exports.index = function(req, res) {
-  Articles.find(function (err, articles) {
+  Videos.find(function (err, videos) {
     if(err) { return handleError(res, err); }
-    return res.status(200).json(articles);
+    return res.status(200).json(videos);
   });
 };
 
-// Creates a new article in the DB.
+// Creates a new video in the DB.
 exports.create = function(req, res) {
-  Articles.create(req.body, function(err, article) {
+  Videos.create(req.body, function(err, video) {
     if(err) { return handleError(res, err); }
-    return res.status(201).json(article);
+    return res.status(201).json(video);
   });
 };

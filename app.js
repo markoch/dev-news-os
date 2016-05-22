@@ -1,17 +1,32 @@
 /*eslint-env node*/
 
-var express     = require('express');
+'use strict';
 
-// define openshift runtime environment
-var server_port       = process.env.OPENSHIFT_NODEJS_PORT || 8080;
-var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+// Set default node environment to development
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
+var express  = require('express');
+var mongoose = require('mongoose');
+var config   = require('./server/config/environment');
+
+//connect to the database
+mongoose.connect(config.mongodb.uri);
+mongoose.connection.on('error', function(err) {
+    console.error('MongoDB connection error: ' + err);
+    process.exit(-1);
+    }
+);
+
+// Populate DB with sample data
+if(config.seedDB) { require('./server/config/seed.js'); }
 
 // create a new express server
 var app = express();
+var server = require('http').createServer(app);
 require('./server/config/express')(app);
 require('./server/routes')(app);
 
 // Start server on the specified port and binding host
-app.listen(server_port, server_ip_address, function () {
-  console.log( 'Listening on ' + server_ip_address + ', server_port ' + server_port + ' in mode ' + process.env.NODE_ENV);
+server.listen(config.server_port, config.server_ip_address, function () {
+  console.log( 'Server listening on ' + config.server_ip_address + ', server_port ' + config.server_port + ' in ' + process.env.NODE_ENV + ' mode');
 });

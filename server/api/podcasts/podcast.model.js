@@ -3,7 +3,7 @@
 var mongoose = require('mongoose'),
       Schema = mongoose.Schema;
 
-var ArticleSchema = new Schema({
+var PodcastSchema = new Schema({
     title: {
         type:String,
         required: true
@@ -20,6 +20,10 @@ var ArticleSchema = new Schema({
         type:String,
         required: true
     },
+    publisher: {
+        type:String,
+        required: true
+    },
     summary: {
         type:String,
         default: ''
@@ -30,8 +34,16 @@ var ArticleSchema = new Schema({
     },
     url: {
         type:String,
+        required: true
+    },
+    dataURL: {
+        type:String,
         required: true,
         unique: true
+    },
+    publisherURL: {
+        type:String,
+        required: true
     },
     tags: {
         type:String,
@@ -61,4 +73,4 @@ var ArticleSchema = new Schema({
     timestamps: true
 });
 
-module.exports = mongoose.model('Article', ArticleSchema);
+module.exports = mongoose.model('Podcast', PodcastSchema);

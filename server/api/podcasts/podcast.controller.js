@@ -9,24 +9,24 @@
 
 'use strict';
 
-var Articles = require('./article.model');
+var Podcasts = require('./podcast.model');
 
 function handleError(res, err) {
   return res.status(500).send(err);
 }
 
-// Get list of articles
+// Get list of podcasts
 exports.index = function(req, res) {
-  Articles.find(function (err, articles) {
+  Podcasts.find(function (err, podcasts) {
     if(err) { return handleError(res, err); }
-    return res.status(200).json(articles);
+    return res.status(200).json(podcasts);
   });
 };
 
-// Creates a new article in the DB.
+// Creates a new podcast in the DB.
 exports.create = function(req, res) {
-  Articles.create(req.body, function(err, article) {
+  Podcasts.create(req.body, function(err, podcast) {
     if(err) { return handleError(res, err); }
-    return res.status(201).json(article);
+    return res.status(201).json(podcast);
   });
 };

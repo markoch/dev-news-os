@@ -3,7 +3,7 @@
 var mongoose = require('mongoose'),
       Schema = mongoose.Schema;
 
-var ArticleSchema = new Schema({
+var VideoSchema = new Schema({
     title: {
         type:String,
         required: true
@@ -29,6 +29,10 @@ var ArticleSchema = new Schema({
         default: ''
     },
     url: {
+        type:String,
+        required: true
+    },
+    dataURL: {
         type:String,
         required: true,
         unique: true
@@ -61,4 +65,4 @@ var ArticleSchema = new Schema({
     timestamps: true
 });
 
-module.exports = mongoose.model('Article', ArticleSchema);
+module.exports = mongoose.model('Video', VideoSchema);
