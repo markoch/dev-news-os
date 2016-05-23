@@ -173,16 +173,16 @@ module.exports = function (grunt) {
     }
    });
 
-	grunt.registerTask('build', [
-	   'clean',
-	   'jshint',
-	   'useminPrepare',
-	   'concat',
-	   'cssmin',
-	   'uglify',
-	   'copy',
-	   'usemin'
-	 ]);
+    grunt.registerTask('build', [
+        'clean',
+        'jshint',
+        'useminPrepare',
+        'concat',
+        'cssmin',
+        'uglify',
+        'copy',
+        'usemin'
+    ]);
 
 	grunt.registerTask('serve',['build','connect:dist','watch']);
 

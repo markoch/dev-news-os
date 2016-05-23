@@ -27,6 +27,6 @@ require('./server/config/express')(app);
 require('./server/routes')(app);
 
 // Start server on the specified port and binding host
-server.listen(config.server_port, config.server_ip_address, function () {
-  console.log( 'Server listening on ' + config.server_ip_address + ', server_port ' + config.server_port + ' in ' + process.env.NODE_ENV + ' mode');
+server.listen(config.server.port, config.server.host, function () {
+  console.log( 'Server listening on ' + config.server.host + ', server_port ' + config.server.port + ' in ' + process.env.NODE_ENV + ' mode');
 });

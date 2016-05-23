@@ -1,6 +1,6 @@
 
 .section {
-    padding: 0px;
+    padding: 0;
     position: relative;
     background-color: #f4f3ef;
     background-image: linear-gradient(to bottom,transparent 0,rgba(112,112,112,0) 60%,rgba(186,186,186,.15) 100%);
