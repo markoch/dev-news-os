@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "start": "node app.js",
-    "test": "./node_modules/jshint/bin/jshint app.js app/scripts/*.js server/*.js"
+    "test": "grunt verify --verbose"
   },
   "dependencies": {
     "angular-youtube-embed": "^1.2.0",

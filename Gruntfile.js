@@ -23,7 +23,9 @@ module.exports = function (grunt) {
        all: {
          src: [
            'Gruntfile.js',
-           'app.js'
+           'app.js',
+           'app/scripts/*.js',
+           'server/**/*.js'
          ]
        }
     },
@@ -182,6 +184,10 @@ module.exports = function (grunt) {
         'uglify',
         'copy',
         'usemin'
+    ]);
+
+    grunt.registerTask('verify', [
+        'jshint'
     ]);
 
 	grunt.registerTask('serve',['build','connect:dist','watch']);
