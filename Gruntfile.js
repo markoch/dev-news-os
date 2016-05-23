@@ -59,7 +59,7 @@ module.exports = function (grunt) {
         },
         target: {
             files: {
-                'dist/css/news.min.css': ['app/css/ct-paper.css', 'app/css/demo.css', 'app/css/examples.css', 'app/css/news.css']
+                'dist/css/news.min.css': ['app/css/ct-paper.min.css', 'app/css/news.css']
             }
         },
         dist: {}
@@ -86,9 +86,7 @@ module.exports = function (grunt) {
         src: [
             '**',
             '!img/favicon/**',
-            '!css/ct-paper.css',
-            '!css/demo.css',
-            '!css/examples.css',
+            '!css/ct-paper.min.css',
             '!css/news.css',
             '!**/config.codekit',
             '!**/.DS_Store'
