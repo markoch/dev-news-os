@@ -14,7 +14,7 @@ var all = {
     },
 
     // Should we populate the DB with sample data?
-    seedDB: true,
+    seedDB: false
 };
 
 // default to a 'localhost' configuration:
