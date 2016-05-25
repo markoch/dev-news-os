@@ -1,4 +1,4 @@
-var cacheName = 'jsnewsPWA004';
+var cacheName = 'jsnewsPWA005';
 var filesToCache = [
     './img/lamp.jpg'
 ];
@@ -28,10 +28,7 @@ self.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.match(event.request)
     .then(function(response) {
-        if (response) {
-            return response;
-        }
-        return fetch(event.request);
+        return response || fetch(event.request);
     })
   );
 });
