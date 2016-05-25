@@ -7,3 +7,5 @@ Developer news website
 
 ## License
 MIT License, see [LICENSE.txt](LICENSE.txt) for more details.
+
+The Bootstrap theme is [licensed](app/CSS/Creative Tim License.pdf) by [Creative Tim](http://www.creative-tim.com/).
