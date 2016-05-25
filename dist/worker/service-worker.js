@@ -8,17 +8,19 @@ self.addEventListener('install', function(e) {
   e.waitUntil(
     caches.open(cacheName)
     .then(function(cache) {
-        console.log('[ServiceWorker] Fetch');
       return cache.addAll(filesToCache);
     })
   );
 });
 
-self.addEventListener('fetch', function(e) {
-  console.log('Fetch', e.request.url);
-  e.respondWith(
-    caches.match(e.request)
-    .then(function(response) {
+self.addEventListener('activate',  event => {
+  event.waitUntil(self.clients.claim());
+});
+
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request)
+    .then(response => {
         if (response) {
             console.log("Get from cache");
             return response;
