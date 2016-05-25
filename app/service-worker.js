@@ -1,6 +1,7 @@
 var cacheName = 'jsnewsPWA003';
 var filesToCache = [
-    './img/lamp.jpg'
+    './img/lamp.jpg',
+    './img/background.jpg'
 ];
 
 self.addEventListener('install', function(e) {
