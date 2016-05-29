@@ -13,7 +13,7 @@ var all = {
     facebook: {
         clientID: process.env.FB_CLIENT_ID,
         clientSecret: process.env.FB_CLIENT_SEC,
-        callbackURL: 'http://www.javascript-news.org:8080/api/v1/users/facebook/callback'
+        callbackURL: 'http://www.javascript-news.org/api/v1/users/facebook/callback'
     },
 
     // default to a 'localhost' mongodb configuration:
