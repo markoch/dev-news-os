@@ -5,14 +5,23 @@ var morgan       = require('morgan');
 var compression  = require('compression');
 var bodyParser   = require('body-parser');
 var cookieParser = require('cookie-parser');
-var cors         = require('cors');
+//var cors         = require('cors');
 var passport     = require('passport');
 
 module.exports = function(app) {
     var env = app.get('env');
-    
-    app.use(cors());
-    app.options('*', cors());
+
+    app.use(function(req, res, next) {
+        res.header('Access-Control-Allow-Credentials', true);
+        res.header('Access-Control-Allow-Origin', req.headers.origin);
+        res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+        res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+        if ('OPTIONS' === req.method) {
+             res.send(200);
+         } else {
+             next();
+         }
+    });
     app.use(compression());
 
     app.use(bodyParser.urlencoded({ extended: false }));
