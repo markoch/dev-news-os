@@ -10,10 +10,10 @@ var passport     = require('passport');
 
 module.exports = function(app) {
     var env = app.get('env');
-
-    app.use(compression());
+    
     app.use(cors());
     app.options('*', cors());
+    app.use(compression());
 
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
