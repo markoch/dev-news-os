@@ -6,13 +6,23 @@ var all = {
         host : process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
     },
 
+    //secret encryption key
+    secretKey: process.env.PP_SECRET_KEY,
+
+    //Facebook oauth implementation
+    facebook: {
+        clientID: process.env.FB_CLIENT_ID,
+        clientSecret: process.env.FB_CLIENT_SEC,
+        callbackURL: 'http://www.javascript-news.org:8080/api/v1/users/facebook/callback'
+    },
+
+    // default to a 'localhost' mongodb configuration:
+    mongodb: {
+        uri: 'mongodb://localhost/devnews-dev'
+    },
+
     // Should we populate the DB with sample data?
     seedDB: false
-};
-
-// default to a 'localhost' configuration:
-all.mongodb = {
-    uri: 'mongodb://localhost/devnews-dev'
 };
 
 // if OPENSHIFT env variables are present, use the available connection info:

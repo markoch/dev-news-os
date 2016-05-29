@@ -60,10 +60,10 @@
                                 </ul>
                             </div>
                             <div class="col-md-4 col-md-offset-1">
-                                <div class="card-big-shadow" ng-if="showBestArticles">
-                                    <div class="card" data-background="green" data-color="green" data-radius="none">
+                                <div  ng-if="showBestArticles">
+                                    <div class="card card-with-shadow" data-background="green" data-color="green" data-radius="none">
                                         <div class="content">
-                                            <h6 class="category">Best stories</h6>
+                                            <h6 class="category">Most popular</h6>
                                             <h5 class="title" ng-repeat="article in bestArticles">
                                                 <a ng-href="{{article.url}}">{{article.title}}</a>
                                             </h5>

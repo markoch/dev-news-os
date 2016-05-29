@@ -5,9 +5,9 @@
 // Set default node environment to development
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-var express  = require('express');
-var mongoose = require('mongoose');
-var config   = require('./server/config/environment');
+var express      = require('express');
+var mongoose     = require('mongoose');
+var config       = require('./server/config/environment');
 
 //connect to the database
 mongoose.connect(config.mongodb.uri);
@@ -24,6 +24,7 @@ if(config.seedDB) { require('./server/config/seed.js'); }
 var app = express();
 var server = require('http').createServer(app);
 require('./server/config/express')(app);
+require('./server/authenticate.js');
 require('./server/routes')(app);
 
 // Start server on the specified port and binding host

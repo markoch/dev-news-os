@@ -67,6 +67,81 @@ angular
 
     }])
 
+    .controller('HeaderController', ['$scope', '$state', '$rootScope', 'ngDialog', 'AuthFactory',
+    function ($scope, $state, $rootScope, ngDialog, AuthFactory) {
+
+        $scope.loggedIn = false;
+        $scope.username = '';
+
+        if(AuthFactory.isAuthenticated()) {
+            $scope.loggedIn = true;
+            $scope.username = AuthFactory.getUsername();
+        }
+
+        $scope.openLogin = function () {
+            ngDialog.open({ template: 'views/login.html', scope: $scope, controller: 'LoginController' });
+        };
+
+        $scope.logOut = function() {
+           AuthFactory.logout();
+            $scope.loggedIn = false;
+            $scope.username = '';
+        };
+
+        $rootScope.$on('login:Successful', function () {
+            $scope.loggedIn = AuthFactory.isAuthenticated();
+            $scope.username = AuthFactory.getUsername();
+        });
+
+        $rootScope.$on('registration:Successful', function () {
+            $scope.loggedIn = AuthFactory.isAuthenticated();
+            $scope.username = AuthFactory.getUsername();
+        });
+
+        $scope.stateis = function(curstate) {
+           return $state.is(curstate);
+        };
+
+    }])
+
+    .controller('LoginController', ['$scope', '$localStorage', 'AuthFactory',
+    function ($scope, $localStorage, AuthFactory) {
+
+        $scope.loginData = $localStorage.getObject('userinfo','{}');
+
+        $scope.doLogin = function() {
+            if($scope.rememberMe) {
+                $localStorage.storeObject('userinfo',$scope.loginData);
+            }
+            AuthFactory.login($scope.loginData);
+        };
+
+        $scope.doLoginFacebook = function() {
+            if($scope.rememberMe) {
+                $localStorage.storeObject('userinfo',$scope.loginData);
+            }
+            AuthFactory.loginFacebook($scope.loginData);
+        };
+    }])
+
+    .controller('RegisterController', ['$scope', '$localStorage', 'AuthFactory',
+    function ($scope, $localStorage, AuthFactory) {
+
+        $scope.register={};
+        $scope.loginData={};
+
+        $scope.doRegister = function() {
+            AuthFactory.register($scope.registration);
+        };
+
+        $scope.doLoginFacebook = function() {
+            if($scope.rememberMe) {
+                $localStorage.storeObject('userinfo',$scope.loginData);
+            }
+            AuthFactory.loginFacebook($scope.loginData);
+        };
+    }])
+
     .controller('AboutController', ['$scope', function($scope) {
         $scope.test = 'foo';
     }])

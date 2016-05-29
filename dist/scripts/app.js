@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('javascriptNews', ['ui.router','ngResource', 'youtube-embed'])
+angular.module('javascriptNews', ['ui.router','ngResource', 'ngDialog', 'youtube-embed'])
 // .config(['$compileProvider', function ($compileProvider) {
 //   $compileProvider.debugInfoEnabled(false);
 // }])
@@ -13,6 +13,7 @@ angular.module('javascriptNews', ['ui.router','ngResource', 'youtube-embed'])
                 views: {
                     'header': {
                         templateUrl : 'views/header.html',
+                        controller  : 'HeaderController'
                     },
                     'content': {
                         templateUrl : 'views/home.html',
