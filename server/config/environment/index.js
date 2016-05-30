@@ -13,7 +13,8 @@ var all = {
     facebook: {
         clientID: process.env.FB_CLIENT_ID,
         clientSecret: process.env.FB_CLIENT_SEC,
-        callbackURL: 'https://www.javascript-news.org/api/v1/users/facebook/callback'
+        callbackURL:  (process.env.DOMAIN || '') + '/api/v1/users/facebook/callback'
+        //callbackURL: 'http://devnews-markoch.rhcloud.com/api/v1/users/facebook/callback'
     },
 
     // default to a 'localhost' mongodb configuration:
@@ -24,6 +25,8 @@ var all = {
     // Should we populate the DB with sample data?
     seedDB: false
 };
+
+console.log('SERVER: ', all.facebook.callbackURL);
 
 // if OPENSHIFT env variables are present, use the available connection info:
 if (process.env.MONGOLAB_URI) {
