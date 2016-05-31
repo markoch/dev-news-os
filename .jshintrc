@@ -1,7 +1,8 @@
 {
     "globals": {
         "$": false,
-        "angular": false
+        "angular": false,
+        "$window": true
     },
     "bitwise": true,
     "browser": true,

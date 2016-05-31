@@ -1,15 +1,21 @@
 'use strict';
 
-angular.module('javascriptNews', ['ui.router','ngResource', 'ngDialog', 'youtube-embed'])
+angular.module('javascriptNews', ['ui.router', 'ngResource', 'ngRoute', 'youtube-embed'])
 // .config(['$compileProvider', function ($compileProvider) {
 //   $compileProvider.debugInfoEnabled(false);
 // }])
+.config(['$locationProvider', function($locationProvider) {
+    $locationProvider.hashPrefix('!');
+}])
 .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
 
             // route for the home page
             .state('app', {
                 url:'/',
+                params: {
+                    token: null
+                },
                 views: {
                     'header': {
                         templateUrl : 'views/header.html',
@@ -21,6 +27,12 @@ angular.module('javascriptNews', ['ui.router','ngResource', 'ngDialog', 'youtube
                     },
                     'footer': {
                         templateUrl : 'views/footer.html',
+                    }
+                },
+                resolve: {
+                    parameters: function($stateParams){
+                        console.log('LOST', $stateParams);
+                        return $stateParams;
                     }
                 }
             })
@@ -48,5 +60,9 @@ angular.module('javascriptNews', ['ui.router','ngResource', 'ngDialog', 'youtube
             });
 
         $urlRouterProvider.otherwise('/');
+
     })
+    .run(['$rootScope', '$location', function($rootScope, $location) {
+      $rootScope.$location = $location;
+    }])
 ;

@@ -67,20 +67,26 @@ angular
 
     }])
 
-    .controller('HeaderController', ['$scope', '$state', '$rootScope', 'ngDialog', 'AuthFactory',
-    function ($scope, $state, $rootScope, ngDialog, AuthFactory) {
+    .controller('HeaderController', ['$scope', '$state' ,'$stateParams', '$rootScope', 'AuthFactory',
+    function ($scope, $state, $stateParams, $rootScope, AuthFactory) {
 
         $scope.loggedIn = false;
         $scope.username = '';
+
+        //read GET variables from GET request set by redirect from Facebook callback
+        var token = $scope.$location.search().token;
+        var succes = $scope.$location.search().success;
+        var username = $scope.$location.search().username;
+
+        if (succes) {
+            AuthFactory.storeUser({username:username, token: token});
+            $rootScope.$broadcast('login:Successful');
+        }
 
         if(AuthFactory.isAuthenticated()) {
             $scope.loggedIn = true;
             $scope.username = AuthFactory.getUsername();
         }
-
-        $scope.openLogin = function () {
-            ngDialog.open({ template: 'views/login.html', scope: $scope, controller: 'LoginController' });
-        };
 
         $scope.logOut = function() {
            AuthFactory.logout();

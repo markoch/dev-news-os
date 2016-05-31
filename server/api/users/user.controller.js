@@ -70,7 +70,10 @@ exports.facebook = function() {
 };
 
 exports.facebookCallback = function(req, res) {
-  passport.authenticate('facebook', function(err, user, info) {
+  passport.authenticate('facebook', {
+      successRedirect: '/',
+      failureRedirect: '/'
+ }, function(err, user, info) {
     if(err) { return handleError(res, err); }
     if (!user) {
         return res.status(401).json({
@@ -85,12 +88,19 @@ exports.facebookCallback = function(req, res) {
             });
         }
         var token = Verify.getToken(user);
-        res.status(200).json({
-            status: 'Login successful!',
-            success: true,
-            token: token,
-            username: user.username
-        });
+        // res.status(200).json({
+        //     status: 'Login successful!',
+        //     success: true,
+        //     token: token,
+        //     username: user.username
+        // });
+        var newLocation = '/#!/?';
+        newLocation += 'success=true&';
+        newLocation += 'token=' + token+'&';
+        newLocation += 'username=' + user.username;
+        
+        res.writeHead(302, {'Location': newLocation});
+        res.end();
     });
   })(req,res);
 };

@@ -83,18 +83,14 @@ angular
         $localStorage.remove(TOKEN_KEY);
       }
 
+      authFac.storeUser = function(credentials) {
+          storeUserCredentials(credentials);
+      };
+
       authFac.loginFacebook = function() {
-          var response = $resource('/api/v1/users/facebook', null);
-          response.get(
-              function(response){
-                  storeUserCredentials({username:response.username, token: response.token});
-                  $rootScope.$broadcast('login:Successful');
-              },
-              function(response) {
-                  //error
-                  console.log(response);
-              }
-          );
+            window.location =
+                window.location.protocol + '//' +
+                window.location.host + '/api/v1/users/facebook';
       };
 
         authFac.login = function(loginData) {
