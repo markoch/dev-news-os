@@ -5,8 +5,8 @@ var morgan       = require('morgan');
 var compression  = require('compression');
 var bodyParser   = require('body-parser');
 var cookieParser = require('cookie-parser');
-//var cors         = require('cors');
 var passport     = require('passport');
+var config       = require('./environment');
 
 module.exports = function(app) {
     var env = app.get('env');
@@ -33,7 +33,7 @@ module.exports = function(app) {
     app.use(passport.session());
 
     // serve the files out of ./dist as our main files
-    app.use(express.static(__dirname + '/../../dist', { maxAge: '1d' }));
+    app.use(express.static(__dirname + config.server.staticDir, { maxAge: '1d' }));
 
     if ('development' === env || 'test' === env) {
         app.use(morgan('dev'));
