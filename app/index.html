@@ -21,6 +21,7 @@
     <script type="text/javascript">
         // Remove the ugly Facebook appended hash
         // <https://github.com/jaredhanson/passport-facebook/issues/12>
+        // http://stackoverflow.com/questions/7131909/facebook-callback-appends-to-return-url
         if (window.location.hash && window.location.hash == '#_=_') {
                 if (window.history && history.pushState) {
                     window.history.pushState("", document.title, window.location.pathname);

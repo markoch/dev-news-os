@@ -5,6 +5,11 @@ angular.module('javascriptNews', ['ui.router', 'ngResource', 'ngRoute', 'youtube
 //   $compileProvider.debugInfoEnabled(false);
 // }])
 .config(['$locationProvider', function($locationProvider) {
+    //allow reading GET variables passed via main page URL
+    //this is required for the OAuth Facebook integration
+    //the default is '!' but whithout specifing this it wont work
+    //$locationProvider requires ngRout module
+    //https://docs.angularjs.org/guide/$location
     $locationProvider.hashPrefix('!');
 }])
 .config(function($stateProvider, $urlRouterProvider) {
@@ -13,9 +18,6 @@ angular.module('javascriptNews', ['ui.router', 'ngResource', 'ngRoute', 'youtube
             // route for the home page
             .state('app', {
                 url:'/',
-                params: {
-                    token: null
-                },
                 views: {
                     'header': {
                         templateUrl : 'views/header.html',
@@ -27,12 +29,6 @@ angular.module('javascriptNews', ['ui.router', 'ngResource', 'ngRoute', 'youtube
                     },
                     'footer': {
                         templateUrl : 'views/footer.html',
-                    }
-                },
-                resolve: {
-                    parameters: function($stateParams){
-                        console.log('LOST', $stateParams);
-                        return $stateParams;
                     }
                 }
             })

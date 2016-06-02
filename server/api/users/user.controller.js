@@ -94,11 +94,14 @@ exports.facebookCallback = function(req, res) {
         //     token: token,
         //     username: user.username
         // });
+        //http://stackoverflow.com/questions/11758079/how-to-get-the-url-parameters-using-angular-js
+        //use Hashbang mode to be compatible with older browsers
+        //https://docs.angularjs.org/guide/$location
         var newLocation = '/#!/?';
         newLocation += 'success=true&';
         newLocation += 'token=' + token+'&';
         newLocation += 'username=' + user.username;
-        
+
         res.writeHead(302, {'Location': newLocation});
         res.end();
     });
