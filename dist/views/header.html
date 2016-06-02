@@ -16,10 +16,7 @@
             <div class="collapse navbar-collapse" id="navigation-example-2">
                 <ul class="nav navbar-nav navbar-right">
                     <li ng-if="!loggedIn">
-                        <a data-toggle="modal" data-target="#registerModal" class="btn btn-simple">Register</a>
-                    </li>
-                    <li ng-if="!loggedIn">
-                        <a data-toggle="modal" data-target="#loginModal" class="btn btn-simple">Login</a>
+                        <a data-toggle="modal" data-target="#loginModal" class="btn btn-simple">Register / Login</a>
                     </li>
                     <li ng-if="loggedIn">
                         <a class="btn btn-simple">{{username}}</a>
