@@ -9,7 +9,7 @@ angular
         };
 
         this.getBestArticles = function() {
-            return $resource('/api/v1/headlines', null);
+            return $resource('/api/v1/articles/top', null);
         };
 
         this.getArticles = function() {

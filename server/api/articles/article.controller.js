@@ -23,6 +23,14 @@ exports.index = function(req, res) {
   });
 };
 
+// Get list of top 3 articles
+exports.indexTop = function(req, res) {
+  Articles.find().sort({counter: -1}).limit(3).exec(function (err, articles) {
+    if(err) { return handleError(res, err); }
+    return res.status(200).json(articles);
+  });
+};
+
 // Get a single article
 exports.show = function(req, res) {
   Articles.findById(req.params.id, function (err, article) {
