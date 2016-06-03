@@ -28,7 +28,6 @@
                             <li class="active"><a href="#follows" data-toggle="tab">Articles</a></li>
                             <li><a href="#podcasts" data-toggle="tab">Podcasts</a></li>
                             <li><a href="#videos" data-toggle="tab">Videos</a></li>
-                            <!--                                 <li><a href="#following" data-toggle="tab">Following</a></li> -->
                         </ul>
                     </div>
                 </div>
@@ -48,10 +47,16 @@
                                                     <h5><div class="badge text-center">{{article.acronym}}</div></h5>
                                                 </div>
                                                 <div class="col-md-10 col-xs-10">
-                                                    <h5><a class="article-link" ng-href="{{article.url}}">{{article.title}}</a><br />
+                                                    <h5><a class="article-link" ng-click="incArticleLink(article._id)" ng-href="{{article.url}}">{{article.title}}</a><br />
                                                         <small>{{article.author}} - {{article.publish}}</small>
                                                     </h5>
-                                                    <i class="fa fa-heart"></i> {{article.counter}}
+                                                    <i class="btn btn-simple fa fa-link"></i> {{article.counter}}
+                                                    <!--<a ng-click="incLike(article._id)" class="btn btn-simple">
+                                                        <i class="fa fa-heart"></i> {{article.likes}}
+                                                    </a>-->
+                                                    <a ng-click="hide(article._id)" class="btn btn-simple">
+                                                        <i class="fa fa-exclamation-circle"></i>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </li>

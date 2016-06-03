@@ -21,8 +21,8 @@ Article.find({}).remove(function() {
         'content': '',
         'url': 'https://medium.freecodecamp.com/lets-learn-javascript-closures-66feb44f6a44#.iuentq5bj',
         'tags': 'Closures',
-        'counter': 4,
-        'likes': 0,
+        'counter': 1,
+        'likes': 1,
         'label': '',
         'image': 'fa-history',
         'isHeadline': true
@@ -36,8 +36,8 @@ Article.find({}).remove(function() {
         'content': '',
         'url': 'https://medium.mybridge.co/the-most-useful-free-ebooks-for-web-developers-3854767ee52f#.3e3pup2cj',
         'tags': 'References',
-        'counter': 5,
-        'likes': 0,
+        'counter': 1,
+        'likes': 1,
         'label': '',
         'image': 'fa-book',
         'isHeadline': true
@@ -51,8 +51,8 @@ Article.find({}).remove(function() {
         'content': '',
         'url': 'https://medium.com/javascript-scene/10-most-recommended-javascript-scene-articles-of-2015-292be655d6cc#.ts904mzbb',
         'tags': 'References',
-        'counter': 6,
-        'likes': 0,
+        'counter': 1,
+        'likes': 1,
         'label': '',
         'image': 'fa-users',
         'isHeadline': true
@@ -67,7 +67,7 @@ Article.find({}).remove(function() {
         'url': 'http://blog.w5labs.com/how-your-gruntfile-should-look-like-the-born-of-rapid-grunt/',
         'tags': 'Task Runner',
         'counter': 1,
-        'likes': 0,
+        'likes': 1,
         'label': '',
         'image': '',
         'isHeadline': false
@@ -90,7 +90,7 @@ Podcast.find({}).remove(function() {
         'publisherURL': 'http://spec.fm/podcasts/developer-tea',
         'tags': 'Teams',
         'counter': 1,
-        'likes': 0,
+        'likes': 1,
         'label': '',
         'image': '',
         'isHeadline': false
@@ -107,8 +107,8 @@ Podcast.find({}).remove(function() {
         'dataURL': 'http://audio.simplecast.com/35739.mp3',
         'publisherURL': 'http://spec.fm/podcasts/developer-tea',
         'tags': 'Refactoring',
-        'counter': 2,
-        'likes': 0,
+        'counter': 1,
+        'likes': 1,
         'label': '',
         'image': '',
         'isHeadline': false
@@ -125,8 +125,8 @@ Podcast.find({}).remove(function() {
         'dataURL': 'https://media.devchat.tv/js-jabber/JSJ210Generators.mp3?rss=true?player=true',
         'publisherURL': 'https://www.acast.com/javascriptjabber',
         'tags': '',
-        'counter': 2,
-        'likes': 0,
+        'counter': 1,
+        'likes': 1,
         'label': '',
         'image': '',
         'isHeadline': false
@@ -147,7 +147,7 @@ Video.find({}).remove(function() {
         'dataURL': 'https://www.youtube-nocookie.com/v/rhV6hlL_wMc?rel=0',
         'tags': 'Teams',
         'counter': 1,
-        'likes': 0,
+        'likes': 1,
         'label': '',
         'image': '',
         'isHeadline': false
@@ -163,7 +163,7 @@ Video.find({}).remove(function() {
         'dataURL': 'https://www.youtube-nocookie.com/v/lKCCZTUx0sI?rel=0',
         'tags': 'OO',
         'counter': 1,
-        'likes': 0,
+        'likes': 1,
         'label': '',
         'image': '',
         'isHeadline': false

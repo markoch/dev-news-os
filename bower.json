@@ -22,7 +22,6 @@
     "fontawesome": "latest",
     "angular-route": "^1.5.5",
     "themify": "^0.1.0",
-    "themify-icons": "^0.1.2",
-    "ng-dialog": "^0.6.1"
+    "themify-icons": "^0.1.2"
   }
 }

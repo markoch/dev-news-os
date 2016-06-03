@@ -2,7 +2,7 @@
 
 angular
     .module('javascriptNews')
-    .controller('IndexController', ['$scope', 'indexFactory', function($scope, indexFactory) {
+    .controller('IndexController', ['$scope', 'indexFactory', 'AuthFactory', function($scope, indexFactory, AuthFactory) {
         $scope.headlineMessage    = ''; //Loading ...
         $scope.bestArticleMessage = '';
         $scope.articleMessage     = '';
@@ -64,6 +64,28 @@ angular
                 $scope.videoMessage = 'Error: ' + response.status + ' ' + response.statusText;
             }
         );
+
+        $scope.incArticleLink = function(sId) {
+            indexFactory.incArticleLink(sId).update(
+                function(response){
+                    return response;
+                },
+                function(response) {
+                    $scope.podcastMessage = 'Error: ' + response.status + ' ' + response.statusText;
+                }
+            );
+        };
+
+        $scope.incLike = function(sId) {
+            console.log('Update Like count for', sId);
+            if(!AuthFactory.isAuthenticated()){
+                $('#loginModal').modal('show');
+            }
+        };
+
+        $scope.hide = function(sId) {
+            console.log('Hide news', sId);
+        };
 
     }])
 

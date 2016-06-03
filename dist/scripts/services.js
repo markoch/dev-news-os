@@ -16,6 +16,20 @@ angular
             return $resource('/api/v1/articles', null);
         };
 
+        this.incArticleLink = function() {
+            return $resource('/api/v1/articles/:id', null,
+            {
+                'update': { method:'PUT' }
+            });
+        };
+
+        this.incArticleLink = function(sId) {
+            return $resource('/api/v1/articles/'+sId+'/link', null,
+            {
+                'update': { method:'PUT' }
+            });
+        };
+
         this.getPodcasts = function() {
             return $resource('/api/v1/podcasts', null);
         };
