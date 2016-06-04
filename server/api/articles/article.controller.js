@@ -74,3 +74,16 @@ exports.incrementCounter = function(req, res) {
     return res.status(200).json(db_res);
   });
 };
+
+// Deletes an article from the DB.
+exports.destroy = function(req, res) {
+    console.log(req.params.id);
+  Articles.findById(req.params.id, function (err, article) {
+    if(err) { return handleError(res, err); }
+    if(!article) { return res.status(404).send('Not Found'); }
+    article.remove(function(err) {
+      if(err) { return handleError(res, err); }
+      return res.status(204).send('No Content');
+    });
+  });
+};

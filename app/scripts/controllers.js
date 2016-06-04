@@ -79,6 +79,18 @@ angular
             }
         );
 
+        $scope.refreshArticles = function() {
+            $scope.articles = indexFactory.getArticles().query(
+                function(response){
+                    $scope.articles = response;
+                    $scope.showArticles = true;
+                },
+                function(response) {
+                    $scope.articleMessage = 'Error: ' + response.status + ' ' + response.statusText;
+                }
+            );
+        };
+
         $scope.isAdmin = function() {
             if (AuthFactory.isAuthenticated() && AuthFactory.isAdmin()){
                 return true;
@@ -89,6 +101,7 @@ angular
         $scope.incArticleLink = function(sId) {
             indexFactory.incArticleLink(sId).update(
                 function(response){
+                    $scope.refreshArticles();
                     return response;
                 },
                 function(response) {
@@ -97,15 +110,26 @@ angular
             );
         };
 
-        $scope.incLike = function(sId) {
-            console.log('Update Like count for', sId);
-            if(!AuthFactory.isAuthenticated()){
-                $('#loginModal').modal('show');
-            }
-        };
+        // $scope.incLike = function(sId) {
+        //     if(!AuthFactory.isAuthenticated()){
+        //         $('#loginModal').modal('show');
+        //     }
+        // };
 
         $scope.hide = function(sId) {
-            console.log('Hide news', sId);
+            //TODO add angular directive for this
+            //http://stackoverflow.com/questions/18313576/confirmation-dialog-on-ng-click-angularjs
+            if (confirm('Do you really want to delete this entry?')) {
+                indexFactory.getArticle(sId).delete(
+                    function(response1){
+                        $scope.refreshArticles();
+                        return response1;
+                    },
+                    function(response) {
+                        $scope.podcastMessage = 'Error: ' + response.status + ' ' + response.statusText;
+                    }
+                );
+            }
         };
 
     }])

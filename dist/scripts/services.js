@@ -16,8 +16,8 @@ angular
             return $resource('/api/v1/articles', null);
         };
 
-        this.incArticleLink = function() {
-            return $resource('/api/v1/articles/:id', null,
+        this.getArticle = function(sId) {
+            return $resource('/api/v1/articles/'+sId, null,
             {
                 'update': { method:'PUT' }
             });

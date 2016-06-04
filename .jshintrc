@@ -2,7 +2,8 @@
     "globals": {
         "$": false,
         "angular": false,
-        "$window": true
+        "$window": true,
+        "confirm": true
     },
     "bitwise": true,
     "browser": true,
