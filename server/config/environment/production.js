@@ -12,7 +12,7 @@ var production = {
         uri: 'mongodb://localhost/devnews-dev'
     },
 
-    seedDB: false
+    seedDB: true
 };
 
 // if OPENSHIFT env variables are present, use the available connection info:
