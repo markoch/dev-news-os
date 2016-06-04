@@ -69,26 +69,21 @@
                 <hr>
                 <form ng-submit="doRegister()">
                     <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" value="" placeholder="Name" class="form-control border-input" ng-model="registration.username" required/>
+                    </div>
+                    <div class="form-group">
                         <label>Email</label>
-        	        	<input type="email" value="" placeholder="Email" class="form-control border-input" ng-model="registration.username" required/>
+        	        	<input type="email" value="" placeholder="Email" class="form-control border-input" ng-model="registration.email" required/>
                 	</div>
                 	 <div class="form-group">
                         <label>Password</label>
         	        	<input type="password" value="" placeholder="Password" class="form-control border-input" ng-model="registration.password" required/>
                 	</div>
-                    <div class="form-group">
-                        <label>Firstname</label>
-                        <input type="text" value="" placeholder="Firstname" class="form-control border-input" ng-model="registration.firstname" required/>
-                    </div>
-                    <div class="form-group">
-                        <label>Lastname</label>
-                        <input type="text" value="" placeholder="Lastname" class="form-control border-input" ng-model="registration.lastname" required/>
-                    </div>
-                    <!--<div class="checkbox">
-                        <label>
-                            <input type="checkbox" ng-model="registration.rememberMe"> Remember me
-                        </label>
-                    </div>-->
+                        <!--<label class="checkbox" for="rememberCb">
+                            <input type="checkbox" value="" id="rememberCb" data-toggle="checkbox" ng-model="registration.rememberMe" checked>
+                                Remember me
+                        </label>-->
                     <button type="submit" class="btn btn-fill btn-block"> Register</button>
                 </form>
           </div>
@@ -115,8 +110,8 @@
                 <hr>
                 <form ng-submit="doLogin()">
                     <div class="form-group">
-                        <label>Email</label>
-        	        	<input type="email" value="" placeholder="Email" class="form-control border-input"  ng-model="loginData.username" required/>
+                        <label>Username</label>
+        	        	<input value="" placeholder="Name" class="form-control border-input"  ng-model="loginData.username" required/>
                 	</div>
                 	 <div class="form-group">
                         <label>Password</label>

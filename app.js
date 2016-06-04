@@ -10,7 +10,7 @@ var mongoose     = require('mongoose');
 var config       = require('./server/config/environment');
 
 //connect to the database
-mongoose.connect(config.mongodb.uri);
+mongoose.connect(config.mongodb.uri, config.mongo.options);
 mongoose.connection.on('error', function(err) {
     console.error('MongoDB connection error: ' + err);
     process.exit(-1);

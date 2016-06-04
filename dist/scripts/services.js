@@ -95,11 +95,13 @@ angular
         var isAuthenticated = false;
         var isAdmin = false;
         var username = '';
+        var email = '';
         var authToken;
 
         function useCredentials(credentials) {
           isAuthenticated = true;
           username  = credentials.username;
+          email     = credentials.email;
           authToken = credentials.token;
           isAdmin   = credentials.admin;
 
@@ -122,6 +124,7 @@ angular
       function destroyUserCredentials() {
         authToken = undefined;
         username = '';
+        email = '';
         isAuthenticated = false;
         isAdmin = false;
         $http.defaults.headers.common['x-access-token'] = authToken;
@@ -142,7 +145,7 @@ angular
             $resource('/api/v1/users/login')
             .save(loginData,
                function(response) {
-                  storeUserCredentials({username:loginData.username, admin: response.admin, token: response.token});
+                  storeUserCredentials({username:loginData.username, email: loginData.email, admin: response.admin, token: response.token});
                   $rootScope.$broadcast('login:Successful');
                   $('#loginModal').modal('hide');
                },
@@ -166,10 +169,10 @@ angular
             $resource('/api/v1/users/register')
             .save(registerData,
                function() {  //param response
-                  authFac.login({username:registerData.username, password:registerData.password});
+                  authFac.login({username:registerData.username, email:registerData.email, password:registerData.password});
                 if (registerData.rememberMe) {
                     $localStorage.storeObject('userinfo',
-                        {username:registerData.username, password:registerData.password});
+                        {username:registerData.username, email:registerData.email, password:registerData.password});
                 }
 
                   $rootScope.$broadcast('registration:Successful');

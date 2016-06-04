@@ -18,6 +18,15 @@ var all = {
         callbackURL:  (process.env.DOMAIN || '') + '/api/v1/users/facebook/callback'
     },
 
+    // MongoDB connection options
+    mongo: {
+      options: {
+        db: {
+          safe: true
+        }
+      }
+    },
+    
     // Should we populate the DB with sample data?
     seedDB: false
 };

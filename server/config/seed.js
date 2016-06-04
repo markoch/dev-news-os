@@ -8,8 +8,10 @@
 var Article = require('../api/articles/article.model');
 var Podcast = require('../api/podcasts/podcast.model');
 var Video   = require('../api/videos/video.model');
+//var User   = require('../api/users/user.model');
 
 Article.find({}).remove(function() {
+
     Article.create(
     {
         'title': 'Let’s Learn JavaScript Closures',

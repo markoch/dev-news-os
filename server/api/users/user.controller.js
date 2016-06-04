@@ -6,6 +6,10 @@ function handleError(res, err) {
   return res.status(500).send(err);
 }
 
+var validationError = function(res, err) {
+  return res.status(422).json(err);
+};
+
 exports.index = function(req, res) {
   User.find({}, function (err, user) {
       if(err) { return handleError(res, err); }
@@ -17,16 +21,13 @@ exports.register = function(req, res) {
     User.register(new User({ username : req.body.username }),
         req.body.password, function(err, user) {
         if(err) { return handleError(res, err); }
-        if(req.body.firstname) {
-            user.firstname = req.body.firstname;
+        if(req.body.email) {
+            user.email = req.body.email;
         }
-        if(req.body.lastname) {
-            user.lastname = req.body.lastname;
-        }
+        user.admin = false;
+        user.provider = '';
         user.save(function(err) {
-            if (err) {
-                return res.status(500).json({err: err});
-            }
+            if (err) {return validationError(res, err);}
             passport.authenticate('local')(req, res, function () {
                 return res.status(200).json({status: 'Registration Successful!'});
             });
