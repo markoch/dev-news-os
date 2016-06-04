@@ -34,8 +34,36 @@ angular
             return $resource('/api/v1/podcasts', null);
         };
 
+        this.getPodcast = function(sId) {
+            return $resource('/api/v1/podcasts/'+sId, null,
+            {
+                'update': { method:'PUT' }
+            });
+        };
+
+        this.incPodcastLink = function(sId) {
+            return $resource('/api/v1/podcasts/'+sId+'/link', null,
+            {
+                'update': { method:'PUT' }
+            });
+        };
+
         this.getVideos = function() {
             return $resource('/api/v1/videos', null);
+        };
+
+        this.getVideo = function(sId) {
+            return $resource('/api/v1/videos/'+sId, null,
+            {
+                'update': { method:'PUT' }
+            });
+        };
+
+        this.incVideoLink = function(sId) {
+            return $resource('/api/v1/videos/'+sId+'/link', null,
+            {
+                'update': { method:'PUT' }
+            });
         };
     }])
 

@@ -48,7 +48,7 @@ exports.create = function(req, res) {
   });
 };
 
-// Updates an existing thing in the DB.
+// Updates an existing article in the DB.
 exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }
   Articles.findById(req.params.id, function (err, article) {

@@ -51,10 +51,7 @@
                                                         <small>{{article.author}} - {{article.publish}}</small>
                                                     </h5>
                                                     <i class="fa fa-link"></i> {{article.counter}}
-                                                    <!--<a ng-click="incLike(article._id)" class="btn btn-simple">
-                                                        <i class="fa fa-heart"></i> {{article.likes}}
-                                                    </a>-->
-                                                    <a ng-click="hide(article._id)" class="btn btn-simple" ng-if="isAdmin()">
+                                                    <a ng-click="hideArticle(article._id)" class="btn btn-simple" ng-if="isAdmin()">
                                                         <i class="fa fa-exclamation-circle"></i>
                                                     </a>
                                                 </div>
@@ -93,10 +90,13 @@
                                                     <center><h5><div class="badge">{{podcast.acronym}}</div></h5></center>
                                                 </div>
                                                 <div class="col-md-10 col-xs-10">
-                                                    <h5><a class="article-link" ng-href="{{podcast.url}}">{{podcast.title}}</a><br />
+                                                    <h5><a class="article-link" ng-click="incPodcastLink(podcast._id)" ng-href="{{podcast.url}}">{{podcast.title}}</a><br />
                                                         <small>{{podcast.author}} - {{podcast.publish}} <a href="{{podcast.publisherURL}}"><i class="fa fa-microphone"></i> {{podcast.publisher}}</a></small>
                                                     </h5>
-                                                    <i class="fa fa-heart"></i> {{podcast.counter}}
+                                                    <i class="fa fa-link"></i> {{podcast.counter}}
+                                                    <a ng-click="hidePodcast(podcast._id)" class="btn btn-simple" ng-if="isAdmin()">
+                                                        <i class="fa fa-exclamation-circle"></i>
+                                                    </a>
                                                     <div class="podcast-section">
                                                         <audio preload="none" controls>
                                                             <source src="http://audio.simplecast.com/17181.mp3" type="audio/mpeg"/>
@@ -139,10 +139,13 @@
                                                     <center><h5><div class="badge">{{video.acronym}}</div></h5></center>
                                                 </div>
                                                 <div class="col-md-10 col-xs-10">
-                                                    <h5><a class="article-link" ng-href="{{video.url}}">{{video.title}}</a><br />
+                                                    <h5><a class="article-link" ng-click="incVideoLink(video._id)" ng-href="{{video.url}}">{{video.title}}</a><br />
                                                         <small>{{video.author}}</small>
                                                     </h5>
-                                                    <i class="fa fa-heart"></i> {{video.counter}}
+                                                    <i class="fa fa-link"></i> {{video.counter}}
+                                                    <a ng-click="hideVideo(video._id)" class="btn btn-simple" ng-if="isAdmin()">
+                                                        <i class="fa fa-exclamation-circle"></i>
+                                                    </a>
                                                     <p>
                                                         <div class="embed-responsive embed-responsive-16by9">
                                                             <youtube-video video-url="video.dataURL"></youtube-video>

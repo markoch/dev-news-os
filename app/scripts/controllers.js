@@ -91,6 +91,30 @@ angular
             );
         };
 
+        $scope.refreshPodcasts = function() {
+            $scope.podcasts = indexFactory.getPodcasts().query(
+                function(response){
+                    $scope.podcasts = response;
+                    $scope.showPodcasts = true;
+                },
+                function(response) {
+                    $scope.podcastMessage = 'Error: ' + response.status + ' ' + response.statusText;
+                }
+            );
+        };
+
+        $scope.refreshVideos = function() {
+            $scope.videos = indexFactory.getVideos().query(
+                function(response){
+                    $scope.videos = response;
+                    $scope.showVideos = true;
+                },
+                function(response) {
+                    $scope.videoMessage = 'Error: ' + response.status + ' ' + response.statusText;
+                }
+            );
+        };
+
         $scope.isAdmin = function() {
             if (AuthFactory.isAuthenticated() && AuthFactory.isAdmin()){
                 return true;
@@ -105,24 +129,58 @@ angular
                     return response;
                 },
                 function(response) {
+                    $scope.articleMessage = 'Error: ' + response.status + ' ' + response.statusText;
+                }
+            );
+        };
+
+        $scope.incPodcastLink = function(sId) {
+            indexFactory.incPodcastLink(sId).update(
+                function(response){
+                    $scope.refreshPodcasts();
+                    return response;
+                },
+                function(response) {
                     $scope.podcastMessage = 'Error: ' + response.status + ' ' + response.statusText;
                 }
             );
         };
 
-        // $scope.incLike = function(sId) {
-        //     if(!AuthFactory.isAuthenticated()){
-        //         $('#loginModal').modal('show');
-        //     }
-        // };
+        $scope.incVideoLink = function(sId) {
+            indexFactory.incVideoLink(sId).update(
+                function(response){
+                    $scope.refreshVideos();
+                    return response;
+                },
+                function(response) {
+                    $scope.videoMessage = 'Error: ' + response.status + ' ' + response.statusText;
+                }
+            );
+        };
 
-        $scope.hide = function(sId) {
+        $scope.hideArticle = function(sId) {
             //TODO add angular directive for this
             //http://stackoverflow.com/questions/18313576/confirmation-dialog-on-ng-click-angularjs
-            if (confirm('Do you really want to delete this entry?')) {
+            if (confirm('Do you really want to delete this article?')) {
                 indexFactory.getArticle(sId).delete(
                     function(response1){
                         $scope.refreshArticles();
+                        return response1;
+                    },
+                    function(response) {
+                        $scope.articleMessage = 'Error: ' + response.status + ' ' + response.statusText;
+                    }
+                );
+            }
+        };
+
+        $scope.hidePodcast = function(sId) {
+            //TODO add angular directive for this
+            //http://stackoverflow.com/questions/18313576/confirmation-dialog-on-ng-click-angularjs
+            if (confirm('Do you really want to delete this podcast?')) {
+                indexFactory.getPodcast(sId).delete(
+                    function(response1){
+                        $scope.refreshPodcasts();
                         return response1;
                     },
                     function(response) {
@@ -132,6 +190,21 @@ angular
             }
         };
 
+        $scope.hideVideo = function(sId) {
+            //TODO add angular directive for this
+            //http://stackoverflow.com/questions/18313576/confirmation-dialog-on-ng-click-angularjs
+            if (confirm('Do you really want to delete this video?')) {
+                indexFactory.getVideo(sId).delete(
+                    function(response1){
+                        $scope.refreshVideos();
+                        return response1;
+                    },
+                    function(response) {
+                        $scope.videoMessage = 'Error: ' + response.status + ' ' + response.statusText;
+                    }
+                );
+            }
+        };
     }])
 
     .controller('HeaderController', ['$scope', '$state' ,'$stateParams', '$rootScope', 'AuthFactory',
