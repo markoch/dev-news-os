@@ -106,9 +106,10 @@ angular
         var token = $scope.$location.search().token;
         var succes = $scope.$location.search().success;
         var username = $scope.$location.search().username;
+        var isAdmin = $scope.$location.search().admin;
 
         if (succes) {
-            AuthFactory.storeUser({username:username, token: token});
+            AuthFactory.storeUser({username:username, admin:isAdmin, token: token});
             $rootScope.$broadcast('login:Successful');
         }
 
