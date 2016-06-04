@@ -2,6 +2,20 @@
 
 angular
     .module('javascriptNews')
+    //this directive is required to switch tabs
+    //if this is not used than on tab switch the page is scrolled to top
+    //https://www.grobmeier.de/bootstrap-tabs-with-angular-js-25112012.html
+    .directive('showtab',
+        function () {
+            return {
+                link: function (scope, element) {
+                    element.click(function(e) {
+                        e.preventDefault();
+                        $(element).tab('show');
+                    });
+                }
+            };
+        })
     .controller('IndexController', ['$scope', 'indexFactory', 'AuthFactory', function($scope, indexFactory, AuthFactory) {
         $scope.headlineMessage    = ''; //Loading ...
         $scope.bestArticleMessage = '';
