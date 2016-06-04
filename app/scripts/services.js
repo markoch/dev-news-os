@@ -200,4 +200,13 @@ angular
         return authFac;
 
     }])
+
+    .service('messageFactory', ['$resource', function($resource) {
+
+        this.getMessages = function() {
+            return $resource('/api/v1/messages', null, {
+                'create': { method:'POST' }
+            });
+        };
+    }])
 ;

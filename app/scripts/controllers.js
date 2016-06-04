@@ -289,8 +289,23 @@ angular
         };
     }])
 
-    .controller('AboutController', ['$scope', function($scope) {
-        $scope.test = 'foo';
+    .controller('AboutController', ['$scope', 'messageFactory', function($scope, messageFactory) {
+        $scope.messageData={};
+
+        $scope.addMessage = function() {
+            messageFactory.getMessages().create($scope.messageData,
+                function(response){
+                    $scope.messageData.user = '';
+                    $scope.messageData.email = '';
+                    $scope.messageData.subject = '';
+                    $scope.messageData.message = '';
+                    return response;
+                },
+                function(response){
+                    console.log('Error: ' + response.status + ' ' + response.statusText);
+                }
+            );
+        };
     }])
 
     .controller('ChangeController', ['$scope', function($scope) {
