@@ -106,7 +106,7 @@ angular
         var token = $scope.$location.search().token;
         var succes = $scope.$location.search().success;
         var username = $scope.$location.search().username;
-        var isAdmin = $scope.$location.search().admin;
+        var isAdmin = $scope.$location.search().admin === 'true' ? true : false;
 
         if (succes) {
             AuthFactory.storeUser({username:username, admin:isAdmin, token: token});

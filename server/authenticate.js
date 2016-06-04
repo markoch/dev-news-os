@@ -33,6 +33,7 @@ exports.facebook = passport.use(new FacebookStrategy({
         }
         user.oauthId = profile.id;
         user.oauthToken = accessToken;
+        user.provider = 'facebook';
         user.save(function(err) {
           if(err) {
             console.log(err); // handle errors!
