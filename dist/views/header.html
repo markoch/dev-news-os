@@ -9,23 +9,31 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">JavaScript News</a>
+                <a class="navbar-brand navbar-brand-logo" href="#">
+                  <div > <b>JavaScript News</b> </div>
+                </a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navigation-example-2">
                 <ul class="nav navbar-nav navbar-right">
                     <li ng-if="!loggedIn">
-                        <a data-toggle="modal" data-target="#loginModal" class="btn btn-simple">Register / Login</a>
+                        <a data-toggle="modal" data-target="#loginModal" class="btn btn-simple">
+                            <i class="pe-7s-user"></i>
+                            <p>Register / Login</p>
+                        </a>
                     </li>
                     <li ng-if="loggedIn">
-                        <a class="btn btn-simple">{{username}}</a>
-                    </li>
-                    <li ng-if="loggedIn">
-                        <a ng-click="logOut()" class="btn btn-simple">Logout</a>
+                        <a ng-click="logOut()" class="btn btn-simple">
+                            <i class="pe-7s-close-circle"></i>
+                            <p>{{username}}</p>
+                        </a>
                     </li>
                     <li>
-                        <a ui-sref="app.about" class="btn btn-simple">About</a>
+                        <a ui-sref="app.about"  class="btn btn-simple">
+                            <i class="pe-7s-science"></i>
+                            <p>About</p>
+                        </a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -36,7 +44,8 @@
 <div class="wrapper">
     <div>
         <div class="profile-background"  style="background-image: url('img/lamp.jpg');">
-            <!-- <div class="profile-background"  style="background-image: url('https://images.unsplash.com/photo-1423655156442-ccc11daa4e99?crop=entropy&dpr=2&fit=crop&fm=jpg&h=750&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450');"> -->
+         <!--<div class="profile-background"  style="background-image: url('https://images.unsplash.com/photo-1423655156442-ccc11daa4e99?crop=entropy&dpr=2&fit=crop&fm=jpg&h=750&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450');">-->
+        <!--<div class="profile-background"  style="background-image: url('https://images.unsplash.com/photo-1430165558479-de3cf8cf1478?crop=entropy&dpr=2&fit=crop&fm=jpg&h=950&ixjsv=2.1.0&ixlib=rb-0.4.5&q=10&w=1450');">-->
             <div class="filter-black"></div>
         </div>
     </div>
