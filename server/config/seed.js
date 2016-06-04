@@ -8,7 +8,6 @@
 var Article = require('../api/articles/article.model');
 var Podcast = require('../api/podcasts/podcast.model');
 var Video   = require('../api/videos/video.model');
-var Users   = require('../api/users/user.model');
 
 Article.find({}).remove(function() {
     Article.create(
@@ -169,7 +168,4 @@ Video.find({}).remove(function() {
         'isHeadline': false
     }
     );
-});
-
-Users.find({}).remove(function() {
 });

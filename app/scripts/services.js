@@ -65,13 +65,15 @@ angular
         var authFac = {};
         var TOKEN_KEY = 'Token';
         var isAuthenticated = false;
+        var isAdmin = false;
         var username = '';
         var authToken;
 
         function useCredentials(credentials) {
           isAuthenticated = true;
-          username = credentials.username;
+          username  = credentials.username;
           authToken = credentials.token;
+          isAdmin   = credentials.admin;
 
           // Set the token as header for your requests!
           $http.defaults.headers.common['x-access-token'] = authToken;
@@ -93,6 +95,7 @@ angular
         authToken = undefined;
         username = '';
         isAuthenticated = false;
+        isAdmin = false;
         $http.defaults.headers.common['x-access-token'] = authToken;
         $localStorage.remove(TOKEN_KEY);
       }
@@ -111,7 +114,7 @@ angular
             $resource('/api/v1/users/login')
             .save(loginData,
                function(response) {
-                  storeUserCredentials({username:loginData.username, token: response.token});
+                  storeUserCredentials({username:loginData.username, admin: response.admin, token: response.token});
                   $rootScope.$broadcast('login:Successful');
                   $('#loginModal').modal('hide');
                },
@@ -154,6 +157,10 @@ angular
 
         authFac.isAuthenticated = function() {
             return isAuthenticated;
+        };
+
+        authFac.isAdmin = function() {
+            return isAdmin;
         };
 
         authFac.getUsername = function() {

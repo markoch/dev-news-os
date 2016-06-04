@@ -54,7 +54,7 @@
                                                     <!--<a ng-click="incLike(article._id)" class="btn btn-simple">
                                                         <i class="fa fa-heart"></i> {{article.likes}}
                                                     </a>-->
-                                                    <a ng-click="hide(article._id)" class="btn btn-simple">
+                                                    <a ng-click="hide(article._id)" class="btn btn-simple" ng-if="isAdmin()">
                                                         <i class="fa fa-exclamation-circle"></i>
                                                     </a>
                                                 </div>

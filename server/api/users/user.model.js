@@ -11,16 +11,12 @@ var User = new Schema({
     oauthId: String,
     oauthToken: String,
     firstname: {
-      type: String,
-      default: ''
+        type: String,
+        default: ''
     },
     lastname: {
-      type: String,
-      default: ''
-    },
-    contributor: {
-        type: Boolean,
-        default: false
+        type: String,
+        default: ''
     },
     admin:   {
         type: Boolean,

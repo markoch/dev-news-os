@@ -53,7 +53,8 @@ exports.login = function(req, res) {
               res.status(200).json({
         status: 'Login successful!',
         success: true,
-        token: token
+        token: token,
+        admin: user.admin
       });
     });
   })(req,res);
@@ -99,7 +100,8 @@ exports.facebookCallback = function(req, res) {
         //https://docs.angularjs.org/guide/$location
         var newLocation = '/#!/?';
         newLocation += 'success=true&';
-        newLocation += 'token=' + token+'&';
+        newLocation += 'token=' + token + '&';
+        newLocation += 'admin=' + user.admin + '&';
         newLocation += 'username=' + user.username;
 
         res.writeHead(302, {'Location': newLocation});

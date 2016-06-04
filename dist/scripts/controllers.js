@@ -65,6 +65,13 @@ angular
             }
         );
 
+        $scope.isAdmin = function() {
+            if (AuthFactory.isAuthenticated() && AuthFactory.isAdmin()){
+                return true;
+            }
+            return false;
+        };
+
         $scope.incArticleLink = function(sId) {
             indexFactory.incArticleLink(sId).update(
                 function(response){
