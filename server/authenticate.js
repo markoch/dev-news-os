@@ -25,7 +25,7 @@ exports.facebook = passport.use(new FacebookStrategy({
         user = new User({
             username: profile.displayName
         });
-        if (profile.emails[0].value) {
+        if (profile.emails && profile.emails[0].value) {
             user.email = profile.emails[0].value;
         }
         user.oauthId = profile.id;
