@@ -68,6 +68,10 @@ var PodcastSchema = new Schema({
     isHeadline: {
         type:String,
         default: false
+    },
+    postedBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     }
 }, {
     timestamps: true
