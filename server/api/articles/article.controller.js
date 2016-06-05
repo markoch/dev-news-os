@@ -19,6 +19,7 @@ function handleError(res, err) {
 exports.index = function(req, res) {
   Articles.find()
     .populate('postedBy')
+    .sort({'createdAt': -1})
     .exec(
         function (err, articles) {
             if(err) { return handleError(res, err); }
