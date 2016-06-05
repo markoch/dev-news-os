@@ -212,4 +212,25 @@ angular
             });
         };
     }])
+
+    .service('addNewsFactory', ['$resource', function($resource) {
+
+        this.getArticles = function() {
+            return $resource('/api/v1/articles', null, {
+                'create': { method:'POST' }
+            });
+        };
+
+        this.getPodcasts = function() {
+            return $resource('/api/v1/podcasts', null, {
+                'create': { method:'POST' }
+            });
+        };
+
+        this.getVideos = function() {
+            return $resource('/api/v1/videos', null, {
+                'create': { method:'POST' }
+            });
+        };
+    }])
 ;

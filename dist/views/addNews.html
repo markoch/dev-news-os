@@ -1,0 +1,198 @@
+<div class="wprofile-content section-nude">
+  <div class="container profile-content section-nude" ng-controller="AddNewsController">
+    <div class="row">
+      <div class="col-xs-12">
+        <h3>Add Content</h3>
+        <hr>
+    </div>
+    </div>
+
+    <div class="row row-content">
+      <div class="col-xs-12 col-sm-8">
+          <div class="profile-tabs">
+              <div class="nav-tabs-navigation">
+                  <div class="nav-tabs-wrapper">
+                      <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+                          <li class="active"><a  showtab="" href="#addArticles" data-toggle="tab">Articles</a></li>
+                          <li><a showtab="" href="#addPodcasts" data-toggle="tab">Podcasts</a></li>
+                          <li><a showtab="" href="#addVideos" data-toggle="tab">Videos</a></li>
+                      </ul>
+                  </div>
+              </div>
+
+              <!-- Add Articles-->
+              <div id="my-tab-content" class="tab-content">
+                  <div class="tab-pane active" id="addArticles">
+                      <div class="row">
+                          <div class="col-md-11">
+                              <form name = "addArticleForm" ng-submit="addArticle()">
+                                  <div class="form-group">
+                                      <label>URL</label>
+                                      <input type="text" value="" placeholder="http://www.google.com" class="form-control border-input" ng-model="newArticle.url" required/>
+                                  </div>
+                                  <div class="form-group">
+                                      <label>Title</label>
+                                      <input value="" placeholder="Title" class="form-control border-input" ng-model="newArticle.title" required/>
+                                </div>
+                                 <div class="form-group">
+                                      <label>Summary</label>
+                                      <textarea rows="2" class="form-control border-input" placeholder="Short summary" ng-model="newArticle.summary"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Author</label>
+                                    <input value="" placeholder="Author" class="form-control border-input" ng-model="newArticle.author" required/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Acronym</label>
+                                    <input value="" placeholder="Acronym of Author" class="form-control border-input" ng-model="newArticle.acronym" required/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Publish Date</label>
+                                    <input value="" placeholder="January 1, 2016" class="form-control border-input" ng-model="newArticle.publish" required/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Tags</label>
+                                    <input value="" placeholder="Reference Closure OO" class="form-control border-input" ng-model="newArticle.tags" required/>
+                                </div>
+
+                                <div class="alert alert-danger alert-with-icon" data-notify="container" ng-if="!isAuthenticated()">
+                                    <div class="container">
+                                        <div class="alert-wrapper">
+                                            <i class="alert-icon ti-bell"></i>
+                                            <div class="message">You must be logged in to post new content.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                  <button type="submit" class="btn btn-fill btn-block" disabled="disabled" ng-if="!isAuthenticated()"> Add &amp; Publish</button>
+                                  <button type="submit" class="btn btn-fill btn-block" ng-if="isAuthenticated()"> Add &amp; Publish</button>
+                              </form>
+
+                          </div>
+                      </div>
+                  </div>
+                  <!-- Finish Articles-->
+
+                  <!-- Add Podcasts-->
+                  <div class="tab-pane" id="addPodcasts">
+                      <div class="row">
+                          <div class="col-md-11">
+                              <form name = "addPodcastForm" ng-submit="addPodcast()">
+                                  <div class="form-group">
+                                      <label>URL</label>
+                                      <input type="text" value="" placeholder="http://www.google.com/intersting/article" class="form-control border-input" ng-model="newPodcast.url" required/>
+                                  </div>
+                                  <div class="form-group">
+                                      <label>MP3 URL</label>
+                                      <input type="text" value="" placeholder="http://www.google.com/audio/mp3" class="form-control border-input" ng-model="newPodcast.dataURL" required/>
+                                  </div>
+                                  <div class="form-group">
+                                      <label>Title</label>
+                                      <input value="" placeholder="Title" class="form-control border-input" ng-model="newPodcast.title" required/>
+                                </div>
+                                 <div class="form-group">
+                                      <label>Summary</label>
+                                      <textarea rows="2" class="form-control border-input" placeholder="Short summary" ng-model="newPodcast.summary"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Author</label>
+                                    <input value="" placeholder="Author" class="form-control border-input" ng-model="newPodcast.author" required/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Acronym</label>
+                                    <input value="" placeholder="Acronym of Author" class="form-control border-input" ng-model="newPodcast.acronym" required/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Publisher</label>
+                                    <input type="text" value="" placeholder="Google" class="form-control border-input" ng-model="newPodcast.publisher" required/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Publisher URL</label>
+                                    <input type="text" value="" placeholder="http://www.google.com" class="form-control border-input" ng-model="newPodcast.publisherURL" required/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Publish Date</label>
+                                    <input value="" placeholder="January 1, 2016" class="form-control border-input" ng-model="newPodcast.publish" required/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Tags</label>
+                                    <input value="" placeholder="Reference Closure OO" class="form-control border-input" ng-model="newPodcast.tags" required/>
+                                </div>
+
+                                <div class="alert alert-danger alert-with-icon" data-notify="container" ng-if="!isAuthenticated()">
+                                    <div class="container">
+                                        <div class="alert-wrapper">
+                                            <i class="alert-icon ti-bell"></i>
+                                            <div class="message">You must be logged in to post new content.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                  <button type="submit" class="btn btn-fill btn-block" disabled="disabled" ng-if="!isAuthenticated()"> Add &amp; Publish</button>
+                                  <button type="submit" class="btn btn-fill btn-block" ng-if="isAuthenticated()"> Add &amp; Publish</button>
+                              </form>
+
+                          </div>
+                      </div>
+                  </div>
+                  <!-- Finish Podcasts-->
+
+                  <!-- Add Videos-->
+                  <div class="tab-pane" id="addVideos">
+                      <div class="row">
+                          <div class="col-md-11">
+                              <form name = "addVideoForm" ng-submit="addVideo()">
+                                  <div class="form-group">
+                                      <label>URL</label>
+                                      <input type="text" value="" placeholder="Link to page containing the video" class="form-control border-input" ng-model="newVideo.url" required/>
+                                  </div>
+                                  <div class="form-group">
+                                      <label>Video URL</label>
+                                      <input type="text" value="" placeholder="Video to embed" class="form-control border-input" ng-model="newVideo.dataURL" required/>
+                                  </div>
+                                  <div class="form-group">
+                                      <label>Title</label>
+                                      <input value="" placeholder="Title" class="form-control border-input" ng-model="newVideo.title" required/>
+                                </div>
+                                 <div class="form-group">
+                                      <label>Summary</label>
+                                      <textarea rows="2" class="form-control border-input" placeholder="Short summary" ng-model="newVideo.summary"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Author</label>
+                                    <input value="" placeholder="Author" class="form-control border-input" ng-model="newVideo.author" required/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Acronym</label>
+                                    <input value="" placeholder="Acronym of Author" class="form-control border-input" ng-model="newVideo.acronym" required/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Publish Date</label>
+                                    <input value="" placeholder="January 1, 2016" class="form-control border-input" ng-model="newVideo.publish" required/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Tags</label>
+                                    <input value="" placeholder="Reference Closure OO" class="form-control border-input" ng-model="newVideo.tags" required/>
+                                </div>
+
+                                <div class="alert alert-danger alert-with-icon" data-notify="container" ng-if="!isAuthenticated()">
+                                    <div class="container">
+                                        <div class="alert-wrapper">
+                                            <i class="alert-icon ti-bell"></i>
+                                            <div class="message">You must be logged in to post new content.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                  <button type="submit" class="btn btn-fill btn-block" disabled="disabled" ng-if="!isAuthenticated()"> Add &amp; Publish</button>
+                                  <button type="submit" class="btn btn-fill btn-block" ng-if="isAuthenticated()"> Add &amp; Publish</button>
+                              </form>
+
+                          </div>
+                      </div>
+                  </div>
+                  <!-- Finish Videos-->
+
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

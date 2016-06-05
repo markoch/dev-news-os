@@ -53,6 +53,17 @@ angular.module('javascriptNews', ['ui.router', 'ngResource', 'ngRoute', 'youtube
                         controller  : 'ChangeController'
                     }
                 }
+            })
+
+            // route for the changes page
+            .state('app.addNews', {
+                url:'addnews',
+                views: {
+                    'content@': {
+                        templateUrl : 'views/addNews.html',
+                        controller  : 'AddNewsController'
+                    }
+                }
             });
 
         $urlRouterProvider.otherwise('/');

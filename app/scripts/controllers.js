@@ -311,4 +311,58 @@ angular
     .controller('ChangeController', ['$scope', function($scope) {
         $scope.test = 'foo';
     }])
+
+    .controller('AddNewsController', ['$scope', 'addNewsFactory', 'AuthFactory', function($scope, addNewsFactory, AuthFactory) {
+        $scope.newArticle = {};
+        $scope.newPodcast = {};
+        $scope.newVideo = {};
+
+        $scope.isAuthenticated = function() {
+            if (AuthFactory.isAuthenticated()){
+                return true;
+            }
+            return false;
+        };
+
+        $scope.addArticle = function() {
+            if (AuthFactory.isAuthenticated()){
+                addNewsFactory.getArticles().create($scope.newArticle,
+                    function(response){
+                        $scope.newArticle = {};
+                        return response;
+                    },
+                    function(response) {
+                        $scope.articleMessage = 'Error: ' + response.status + ' ' + response.statusText;
+                    }
+                );
+            } else {
+                //TODO show error message
+            }
+        };
+
+        $scope.addPodcast = function() {
+            addNewsFactory.getPodcasts().create($scope.newPodcast,
+                function(response){
+                    $scope.newPodcast = {};
+                    return response;
+                },
+                function(response) {
+                    $scope.podcastMessage = 'Error: ' + response.status + ' ' + response.statusText;
+                }
+            );
+        };
+
+        $scope.addVideo = function() {
+            addNewsFactory.getVideos().create($scope.newVideo,
+                function(response){
+                    $scope.newVideo = {};
+                    return response;
+                },
+                function(response) {
+                    $scope.videoMessage = 'Error: ' + response.status + ' ' + response.statusText;
+                }
+            );
+        };
+
+    }])
 ;
