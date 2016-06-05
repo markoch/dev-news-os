@@ -17,37 +17,51 @@ function handleError(res, err) {
 
 // Get list of podcasts
 exports.index = function(req, res) {
-  Podcasts.find(function (err, podcasts) {
-    if(err) { return handleError(res, err); }
-    return res.status(200).json(podcasts);
-  });
+    Podcasts.find()
+      .populate('postedBy')
+      .exec(
+          function (err, podcasts) {
+              if(err) { return handleError(res, err); }
+              return res.status(200).json(podcasts);
+          }
+      );
 };
 
 // Get list of top 3 podcasts
 exports.indexTop = function(req, res) {
-  Podcasts.find().sort({counter: -1}).limit(3).exec(function (err, podcasts) {
-    if(err) { return handleError(res, err); }
-    return res.status(200).json(podcasts);
-  });
+    Podcasts.find()
+      .populate('postedBy')
+      .sort({counter: -1})
+      .limit(3)
+      .exec(
+          function (err, podcasts) {
+              if(err) { return handleError(res, err); }
+              return res.status(200).json(podcasts);
+          }
+      );
 };
 
 
 // Get a single podcast
 exports.show = function(req, res) {
-    console.log(req.params.id);
-  Podcasts.findById(req.params.id, function (err, podcast) {
-    if(err) { return handleError(res, err); }
-    if(!podcast) { return res.status(404).send('Not Found'); }
-    return res.json(podcast);
-  });
+    Podcasts.findById(req.params.id)
+      .populate('postedBy')
+      .exec(
+          function (err, podcast) {
+              if(err) { return handleError(res, err); }
+              if(!podcast) { return res.status(404).send('Not Found'); }
+              return res.json(podcast);
+          }
+      );
 };
 
 // Creates a new podcast in the DB.
 exports.create = function(req, res) {
-  Podcasts.create(req.body, function(err, podcast) {
-    if(err) { return handleError(res, err); }
-    return res.status(201).json(podcast);
-  });
+    req.body.postedBy = req.decoded._doc._id;
+    Podcasts.create(req.body, function(err, podcast) {
+        if(err) { return handleError(res, err); }
+        return res.status(201).json(podcast);
+    });
 };
 
 // Updates an existing podcast in the DB.

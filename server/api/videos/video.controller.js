@@ -17,35 +17,50 @@ function handleError(res, err) {
 
 // Get list of videos
 exports.index = function(req, res) {
-  Videos.find(function (err, videos) {
-    if(err) { return handleError(res, err); }
-    return res.status(200).json(videos);
-  });
+    Videos.find()
+      .populate('postedBy')
+      .exec(
+          function (err, videos) {
+              if(err) { return handleError(res, err); }
+              return res.status(200).json(videos);
+          }
+      );
 };
 
 // Get list of top 3 videos
 exports.indexTop = function(req, res) {
-  Videos.find().sort({counter: -1}).limit(3).exec(function (err, videos) {
-    if(err) { return handleError(res, err); }
-    return res.status(200).json(videos);
-  });
+    Videos.find()
+      .populate('postedBy')
+      .sort({counter: -1})
+      .limit(3)
+      .exec(
+          function (err, videos) {
+              if(err) { return handleError(res, err); }
+              return res.status(200).json(videos);
+          }
+      );
 };
 
 // Get a single video
 exports.show = function(req, res) {
-  Videos.findById(req.params.id, function (err, video) {
-    if(err) { return handleError(res, err); }
-    if(!video) { return res.status(404).send('Not Found'); }
-    return res.json(video);
-  });
+    Videos.findById(req.params.id)
+      .populate('postedBy')
+      .exec(
+          function (err, video) {
+              if(err) { return handleError(res, err); }
+              if(!video) { return res.status(404).send('Not Found'); }
+              return res.json(video);
+          }
+      );
 };
 
 // Creates a new video in the DB.
 exports.create = function(req, res) {
-  Videos.create(req.body, function(err, video) {
-    if(err) { return handleError(res, err); }
-    return res.status(201).json(video);
-  });
+    req.body.postedBy = req.decoded._doc._id;
+    Videos.create(req.body, function(err, video) {
+        if(err) { return handleError(res, err); }
+        return res.status(201).json(video);
+    });
 };
 
 // Updates an existing video in the DB.

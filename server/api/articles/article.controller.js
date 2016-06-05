@@ -17,35 +17,50 @@ function handleError(res, err) {
 
 // Get list of articles
 exports.index = function(req, res) {
-  Articles.find(function (err, articles) {
-    if(err) { return handleError(res, err); }
-    return res.status(200).json(articles);
-  });
+  Articles.find()
+    .populate('postedBy')
+    .exec(
+        function (err, articles) {
+            if(err) { return handleError(res, err); }
+            return res.status(200).json(articles);
+        }
+    );
 };
 
 // Get list of top 3 articles
 exports.indexTop = function(req, res) {
-  Articles.find().sort({counter: -1}).limit(3).exec(function (err, articles) {
-    if(err) { return handleError(res, err); }
-    return res.status(200).json(articles);
-  });
+  Articles.find()
+    .populate('postedBy')
+    .sort({counter: -1})
+    .limit(3)
+    .exec(
+        function (err, articles) {
+            if(err) { return handleError(res, err); }
+            return res.status(200).json(articles);
+        }
+    );
 };
 
 // Get a single article
 exports.show = function(req, res) {
-  Articles.findById(req.params.id, function (err, article) {
-    if(err) { return handleError(res, err); }
-    if(!article) { return res.status(404).send('Not Found'); }
-    return res.json(article);
-  });
+  Articles.findById(req.params.id)
+    .populate('postedBy')
+    .exec(
+        function (err, article) {
+            if(err) { return handleError(res, err); }
+            if(!article) { return res.status(404).send('Not Found'); }
+            return res.json(article);
+        }
+    );
 };
 
 // Creates a new article in the DB.
 exports.create = function(req, res) {
-  Articles.create(req.body, function(err, article) {
-    if(err) { return handleError(res, err); }
-    return res.status(201).json(article);
-  });
+    req.body.postedBy = req.decoded._doc._id;
+    Articles.create(req.body, function(err, article) {
+        if(err) { return handleError(res, err); }
+        return res.status(201).json(article);
+    });
 };
 
 // Updates an existing article in the DB.

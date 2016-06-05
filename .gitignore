@@ -4,3 +4,5 @@ node_modules
 **/npm-debug.log
 **/config.codekit
 **/.DS_Store
+
+app/css/news.min.css
