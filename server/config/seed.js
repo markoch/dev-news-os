@@ -1,6 +1,7 @@
 /**
- * Populate DB with sample data on server start
- * to disable, edit config/environment/index.js, and set `seedDB: false`
+ * Populate DB with sample data when the server starts.
+ * This is triggered automatically by the seed property in
+ * the configuration.
  */
 
 'use strict';
@@ -10,12 +11,8 @@ var Article = require('../api/articles/article.model');
 var Podcast = require('../api/podcasts/podcast.model');
 var Video   = require('../api/videos/video.model');
 
-Article.find({}).remove(function() {
-    var userObjectId = '';
-    User.findOne({ 'username': 'Marco' }, function (err, user) {
-        if (err) {return err;}
-        userObjectId = user._id;
-
+var initDB = function (userObjectId) {
+    Article.find({}).remove(function() {
         Article.create(
         {
             'title': 'Let’s Learn JavaScript Closures',
@@ -82,6 +79,7 @@ Article.find({}).remove(function() {
             'postedBy': userObjectId
         }
         );
+    });
     Podcast.find({}).remove(function() {
         Podcast.create(
          {
@@ -182,6 +180,27 @@ Article.find({}).remove(function() {
         }
         );
     });
-    console.log('finished populating');
-    });
+};
+
+var userObjectId = '';
+User.findOne({ 'username': 'Marco' }, function (err, user) {
+    if (err || user === null) {
+        if (err) {console.log('Error during populating database', err);}
+        User.create(
+        {
+            'username': 'Marco',
+            'email': 'marco.koch.dev@gmail.com'
+        }, function (err) {
+            if (err) {console.log('Error during populating database', err);}
+            User.findOne({ 'username': 'Marco' }, function (err, user) {
+                userObjectId = user._id;
+                initDB(userObjectId);
+            });
+        });
+    } else {
+        userObjectId = user._id;
+        initDB(userObjectId);
+    }
+
+    console.log('Finished populating database');
 });

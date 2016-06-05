@@ -54,19 +54,19 @@ User
 }, 'Password cannot be blank');
 
 // Validate email is not taken
-User
-  .path('email')
-  .validate(function(value, respond) {
-    var self = this;
-    this.constructor.findOne({email: value}, function(err, user) {
-      if(err) {throw err;}
-      if(user) {
-        if(self.id === user.id) {return respond(true);}
-        return respond(false);
-      }
-      respond(true);
-    });
-}, 'The specified email address is already in use.');
+// User
+//   .path('email')
+//   .validate(function(value, respond) {
+//     var self = this;
+//     this.constructor.findOne({email: value}, function(err, user) {
+//       if(err) {throw err;}
+//       if(user) {
+//         if(self.id === user.id) {return respond(true);}
+//         return respond(false);
+//       }
+//       respond(true);
+//     });
+// }, 'The specified email address is already in use.');
 
 User.plugin(passportLocalMongoose);
 
