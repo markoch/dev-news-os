@@ -51,6 +51,7 @@
                                                         <small>{{article.author}} - {{article.publish}}</small>
                                                     </h5>
                                                     <i class="fa fa-link"></i> {{article.counter}}
+                                                    <a class="btn-simple article-link" ng-click="incArticleLink(article._id)" ng-href="{{article.url}}"> <i class="fa fa-external-link"></i></a>
                                                     <a ng-click="hideArticle(article._id)" class="btn btn-simple" ng-if="isAdmin()">
                                                         <i class="fa fa-exclamation-circle"></i>
                                                     </a>
@@ -95,6 +96,7 @@
                                                         <small>{{podcast.author}} - {{podcast.publish}} <a href="{{podcast.publisherURL}}"><i class="fa fa-microphone"></i> {{podcast.publisher}}</a></small>
                                                     </h5>
                                                     <i class="fa fa-link"></i> {{podcast.counter}}
+                                                    <a class="btn-simple article-link" ng-click="incPodcastLink(podcast._id)" ng-href="{{podcast.url}}"> <i class="fa fa-external-link"></i></a>
                                                     <a ng-click="hidePodcast(podcast._id)" class="btn btn-simple" ng-if="isAdmin()">
                                                         <i class="fa fa-exclamation-circle"></i>
                                                     </a>
@@ -142,9 +144,10 @@
                                                 </div>
                                                 <div class="col-md-10 col-xs-10">
                                                     <h5><a class="article-link" ng-click="incVideoLink(video._id)" ng-href="{{video.url}}">{{video.title}}</a><br />
-                                                        <small>{{video.author}}</small>
+                                                        <small>{{video.author}} - {{video.publish}}</small>
                                                     </h5>
                                                     <i class="fa fa-link"></i> {{video.counter}}
+                                                    <a class="btn-simple article-link" ng-click="incVideoLink(video._id)" ng-href="{{video.url}}"> <i class="fa fa-external-link"></i></a>
                                                     <a ng-click="hideVideo(video._id)" class="btn btn-simple" ng-if="isAdmin()">
                                                         <i class="fa fa-exclamation-circle"></i>
                                                     </a>
