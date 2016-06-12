@@ -216,7 +216,7 @@ angular
         //read GET variables from GET request set by redirect from Facebook callback
         var token = $cookieStore.get('token');
         var username = $cookieStore.get('username');
-        var isAdmin = $cookieStore.get('admin') === 'true' ? true : false;
+        var isAdmin = $cookieStore.get('admin') === true ? true : false;
         if (username && token) {
             AuthFactory.storeUser({username:username, admin:isAdmin, token: token});
             $rootScope.$broadcast('login:Successful');
