@@ -11,7 +11,7 @@ router.get('/', Verify.verifyOrdinaryUser, Verify.verifyAdmin, controller.index)
 router.post('/register', controller.register);
 router.post('/login', controller.login);
 router.get('/logout', controller.logout);
-router.get('/facebook', passport.authenticate('facebook', {scope: ['email', 'user_about_me']}, controller.facebook));
+router.get('/facebook', passport.authenticate('facebook', {scope: ['email', 'user_about_me'], session: false}, controller.facebook));
 router.get('/facebook/callback', controller.facebookCallback);
 
 

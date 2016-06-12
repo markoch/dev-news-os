@@ -22,6 +22,7 @@
     "fontawesome": "latest",
     "angular-route": "^1.5.5",
     "themify": "^0.1.0",
-    "themify-icons": "^0.1.2"
+    "themify-icons": "^0.1.2",
+    "angular-cookies": "^1.5.6"
   }
 }

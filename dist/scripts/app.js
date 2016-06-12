@@ -1,17 +1,17 @@
 'use strict';
 
-angular.module('javascriptNews', ['ui.router', 'ngResource', 'ngRoute', 'youtube-embed'])
+angular.module('javascriptNews', ['ui.router', 'ngResource', 'ngRoute', 'ngCookies', 'youtube-embed'])
 // .config(['$compileProvider', function ($compileProvider) {
 //   $compileProvider.debugInfoEnabled(false);
 // }])
-.config(['$locationProvider', function($locationProvider) {
-    //allow reading GET variables passed via main page URL
-    //this is required for the OAuth Facebook integration
-    //the default is '!' but whithout specifing this it wont work
-    //$locationProvider requires ngRout module
-    //https://docs.angularjs.org/guide/$location
-    $locationProvider.hashPrefix('!');
-}])
+// .config(['$locationProvider', function($locationProvider) {
+//     //allow reading GET variables passed via main page URL
+//     //this is required for the OAuth Facebook integration
+//     //the default is '!' but whithout specifing this it wont work
+//     //$locationProvider requires ngRout module
+//     //https://docs.angularjs.org/guide/$location
+//     $locationProvider.hashPrefix('!');
+// }])
 .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
 

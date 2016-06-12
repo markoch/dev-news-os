@@ -207,21 +207,33 @@ angular
         };
     }])
 
-    .controller('HeaderController', ['$scope', '$state' ,'$stateParams', '$rootScope', 'AuthFactory',
-    function ($scope, $state, $stateParams, $rootScope, AuthFactory) {
+    .controller('HeaderController', ['$scope', '$state' ,'$stateParams', '$rootScope', '$cookieStore', 'AuthFactory',
+    function ($scope, $state, $stateParams, $rootScope, $cookieStore, AuthFactory) {
 
         $scope.loggedIn = false;
         $scope.username = '';
 
         //read GET variables from GET request set by redirect from Facebook callback
-        var token = $scope.$location.search().token;
-        var succes = $scope.$location.search().success;
-        var username = $scope.$location.search().username;
-        var isAdmin = $scope.$location.search().admin === 'true' ? true : false;
-
-        if (succes) {
+        var token = $cookieStore.get('token');
+        var username = $cookieStore.get('username');
+        var isAdmin = $cookieStore.get('admin') === 'true' ? true : false;
+        if (username && token) {
             AuthFactory.storeUser({username:username, admin:isAdmin, token: token});
             $rootScope.$broadcast('login:Successful');
+        } else {
+            AuthFactory.logout();
+             $scope.loggedIn = false;
+             $scope.username = '';
+
+             if (token) {
+                 $cookieStore.remove('token');
+             }
+             if (username) {
+                 $cookieStore.remove('username');
+             }
+             if (isAdmin) {
+                 $cookieStore.remove('admin');
+             }
         }
 
         if(AuthFactory.isAuthenticated()) {
@@ -363,6 +375,5 @@ angular
                 }
             );
         };
-
     }])
 ;

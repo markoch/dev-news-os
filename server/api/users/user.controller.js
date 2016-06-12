@@ -74,7 +74,8 @@ exports.facebook = function() {
 exports.facebookCallback = function(req, res) {
   passport.authenticate('facebook', {
       successRedirect: '/',
-      failureRedirect: '/'
+      failureRedirect: '/',
+      session: false
  }, function(err, user, info) {
     if(err) { return handleError(res, err); }
     if (!user) {
@@ -99,14 +100,16 @@ exports.facebookCallback = function(req, res) {
         //http://stackoverflow.com/questions/11758079/how-to-get-the-url-parameters-using-angular-js
         //use Hashbang mode to be compatible with older browsers
         //https://docs.angularjs.org/guide/$location
-        var newLocation = '/#!/?';
-        newLocation += 'success=true&';
-        newLocation += 'token=' + token + '&';
-        newLocation += 'admin=' + user.admin + '&';
-        newLocation += 'username=' + user.username;
+        // var newLocation = '/#!/?';
+        // newLocation += 'success=true&';
+        // newLocation += 'token=' + token + '&';
+        // newLocation += 'admin=' + user.admin + '&';
+        // newLocation += 'username=' + user.username;
 
-        res.writeHead(302, {'Location': newLocation});
-        res.end();
+        res.cookie('token', JSON.stringify(token));
+        res.cookie('admin', JSON.stringify(user.admin));
+        res.cookie('username', JSON.stringify(user.username));
+        res.redirect('/');
     });
   })(req,res);
 };
