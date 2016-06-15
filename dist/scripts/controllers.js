@@ -245,6 +245,17 @@ angular
            AuthFactory.logout();
             $scope.loggedIn = false;
             $scope.username = '';
+            
+            //remove the cookies
+            if ($cookieStore.get('token')) {
+                $cookieStore.remove('token');
+            }
+            if ($cookieStore.get('username')) {
+                $cookieStore.remove('username');
+            }
+            if ($cookieStore.get('admin')) {
+                $cookieStore.remove('admin');
+            }
         };
 
         $rootScope.$on('login:Successful', function () {
