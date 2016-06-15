@@ -245,7 +245,7 @@ angular
            AuthFactory.logout();
             $scope.loggedIn = false;
             $scope.username = '';
-            
+
             //remove the cookies
             if ($cookieStore.get('token')) {
                 $cookieStore.remove('token');
@@ -329,6 +329,10 @@ angular
                 }
             );
         };
+    }])
+
+    .controller('PrivacyController', ['$scope', function($scope) {
+        $scope.test = 'foo';
     }])
 
     .controller('ChangeController', ['$scope', function($scope) {
