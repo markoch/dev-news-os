@@ -51,7 +51,7 @@ var PodcastSchema = new Schema({
     },
     counter: {
         type:Number,
-        default: 0
+        default: 1
     },
     likes: {
         type:Number,
