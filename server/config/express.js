@@ -33,7 +33,7 @@ module.exports = function(app) {
     app.use(passport.session());
 
     // serve the files out of ./dist as our main files
-    app.use(express.static(__dirname + config.server.staticDir, { maxAge: '1d' }));
+    app.use(express.static(__dirname + config.server.staticDir, { maxAge: '7d' }));
 
     if ('development' === env || 'test' === env) {
         app.use(morgan('dev'));
