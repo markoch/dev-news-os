@@ -15,7 +15,7 @@
     "compression": "1.6.x",
     "cookie-parser": "1.4.x",
     "cors": "2.7.x",
-    "express": "4.13.x",
+    "express": "^4.14.0",
     "jsonwebtoken": "^7.0.x",
     "mongoose": "4.5.x",
     "morgan": "1.7.x",
