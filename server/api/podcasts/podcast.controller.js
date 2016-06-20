@@ -17,7 +17,7 @@ function handleError(res, err) {
 
 // Get list of podcasts
 exports.index = function(req, res) {
-    Podcasts.find()
+    Podcasts.find({ 'isValid': true })
       .populate('postedBy')
       .sort({'createdAt': -1})
       .exec(
@@ -30,7 +30,7 @@ exports.index = function(req, res) {
 
 // Get list of top 3 podcasts
 exports.indexTop = function(req, res) {
-    Podcasts.find()
+    Podcasts.find({ 'isValid': true })
       .populate('postedBy')
       .sort({counter: -1})
       .limit(3)
@@ -59,6 +59,7 @@ exports.show = function(req, res) {
 // Creates a new podcast in the DB.
 exports.create = function(req, res) {
     req.body.postedBy = req.decoded._doc._id;
+    req.body.isValid = false;
     Podcasts.create(req.body, function(err, podcast) {
         if(err) { return handleError(res, err); }
         return res.status(201).json(podcast);

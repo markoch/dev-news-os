@@ -61,6 +61,10 @@ var VideoSchema = new Schema({
         type:String,
         default: false
     },
+    isValid: {
+        type:Boolean,
+        default: false
+    },
     postedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'

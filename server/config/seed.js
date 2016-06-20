@@ -28,6 +28,7 @@ var initDB = function (userObjectId) {
             'label': '',
             'image': 'fa-history',
             'isHeadline': true,
+            'isValid': true,
             'postedBy': userObjectId
         },
         {
@@ -44,6 +45,7 @@ var initDB = function (userObjectId) {
             'label': '',
             'image': 'fa-book',
             'isHeadline': true,
+            'isValid': true,
             'postedBy': userObjectId
         },
         {
@@ -60,6 +62,7 @@ var initDB = function (userObjectId) {
             'label': '',
             'image': 'fa-users',
             'isHeadline': true,
+            'isValid': true,
             'postedBy': userObjectId
         },
         {
@@ -76,6 +79,7 @@ var initDB = function (userObjectId) {
             'label': '',
             'image': '',
             'isHeadline': false,
+            'isValid': true,
             'postedBy': userObjectId
         }
         );
@@ -99,6 +103,7 @@ var initDB = function (userObjectId) {
             'label': '',
             'image': '',
             'isHeadline': false,
+            'isValid': true,
             'postedBy': userObjectId
         },
         {
@@ -118,6 +123,7 @@ var initDB = function (userObjectId) {
             'label': '',
             'image': '',
             'isHeadline': false,
+            'isValid': true,
             'postedBy': userObjectId
         },
         {
@@ -137,6 +143,7 @@ var initDB = function (userObjectId) {
             'label': '',
             'image': '',
             'isHeadline': false,
+            'isValid': true,
             'postedBy': userObjectId
         }
         );
@@ -159,6 +166,7 @@ var initDB = function (userObjectId) {
             'label': '',
             'image': '',
             'isHeadline': false,
+            'isValid': true,
             'postedBy': userObjectId
         },
         {
@@ -176,6 +184,7 @@ var initDB = function (userObjectId) {
             'label': '',
             'image': '',
             'isHeadline': false,
+            'isValid': true,
             'postedBy': userObjectId
         }
         );

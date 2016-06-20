@@ -17,7 +17,7 @@ function handleError(res, err) {
 
 // Get list of videos
 exports.index = function(req, res) {
-    Videos.find()
+    Videos.find({ 'isValid': true })
       .populate('postedBy')
       .sort({'createdAt': -1})
       .exec(
@@ -30,7 +30,7 @@ exports.index = function(req, res) {
 
 // Get list of top 3 videos
 exports.indexTop = function(req, res) {
-    Videos.find()
+    Videos.find({ 'isValid': true })
       .populate('postedBy')
       .sort({counter: -1})
       .limit(3)
@@ -58,6 +58,7 @@ exports.show = function(req, res) {
 // Creates a new video in the DB.
 exports.create = function(req, res) {
     req.body.postedBy = req.decoded._doc._id;
+    req.body.isValid = false;
     Videos.create(req.body, function(err, video) {
         if(err) { return handleError(res, err); }
         return res.status(201).json(video);

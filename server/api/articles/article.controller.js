@@ -17,7 +17,7 @@ function handleError(res, err) {
 
 // Get list of articles
 exports.index = function(req, res) {
-  Articles.find()
+  Articles.find({ 'isValid': true })
     .populate('postedBy')
     .sort({'createdAt': -1})
     .exec(
@@ -30,7 +30,7 @@ exports.index = function(req, res) {
 
 // Get list of top 3 articles
 exports.indexTop = function(req, res) {
-  Articles.find()
+  Articles.find({ 'isValid': true })
     .populate('postedBy')
     .sort({counter: -1})
     .limit(3)
@@ -58,6 +58,7 @@ exports.show = function(req, res) {
 // Creates a new article in the DB.
 exports.create = function(req, res) {
     req.body.postedBy = req.decoded._doc._id;
+    req.body.isValid = false;
     Articles.create(req.body, function(err, article) {
         if(err) { return handleError(res, err); }
         return res.status(201).json(article);
@@ -72,6 +73,7 @@ exports.update = function(req, res) {
     if(!article) { return res.status(404).send('Not Found'); }
 
     var updated = _.merge(article, req.body);
+    updated.isValid = false;
     updated.save(function (err) {
       if (err) { return handleError(res, err); }
       return res.status(200).json(article);
