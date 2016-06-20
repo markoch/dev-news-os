@@ -12,6 +12,11 @@ angular.module('javascriptNews', ['ui.router', 'ngResource', 'ngRoute', 'ngCooki
 //     //https://docs.angularjs.org/guide/$location
 //     $locationProvider.hashPrefix('!');
 // }])
+.filter('trustUrl', ['$sce', function ($sce) {
+  return function(url) {
+    return $sce.trustAsResourceUrl(url);
+  };
+}])
 .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
 
