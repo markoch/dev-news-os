@@ -8,8 +8,8 @@ Here you will find all the information about the <a href="http://www.javascript-
 
 <img src="https://raw.githubusercontent.com/markoch/dev-news-os/master/screenshots/website.png"/>
 
-It can also be accessed by a mobile application at <a href="https://play.google.com/apps/testing/com.jsnews.hybrid">Google Play Store</a>.
-The source-code of the app is available at <a href="https://github.com/markoch/dev-news-app">GitHub</a>.
+It can also be accessed by a mobile hybrid application. The source-code of the app is available at
+<a href="https://github.com/markoch/dev-news-app">GitHub</a>.
 
 ## License
 MIT License, see [LICENSE.txt](LICENSE.txt) for more details.
