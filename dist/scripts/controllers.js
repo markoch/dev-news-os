@@ -79,6 +79,14 @@ angular
             }
         );
 
+        $scope.playerVars = {
+          rel: 0,
+          loop: 0,
+          showinfo: 0,
+          modestbranding: 0,
+          autoplay: 0
+      };
+
         $scope.refreshArticles = function() {
             $scope.articles = indexFactory.getArticles().query(
                 function(response){
