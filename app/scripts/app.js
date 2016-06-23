@@ -49,13 +49,24 @@ angular.module('javascriptNews', ['ui.router', 'ngResource', 'ngRoute', 'ngCooki
                 }
             })
 
-            // route for the aboutus page
+            // route for the privacy page
             .state('app.privacy', {
                 url:'privacy',
                 views: {
                     'content@': {
                         templateUrl : 'views/privacy.html',
                         controller  : 'PrivacyController'
+                    }
+                }
+            })
+
+            // route for the aboutus page
+            .state('app.legal', {
+                url:'legal',
+                views: {
+                    'content@': {
+                        templateUrl : 'views/legal.html',
+                        controller  : 'LegalController'
                     }
                 }
             })
