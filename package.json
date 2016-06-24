@@ -6,7 +6,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "node start.js",
+    "start": "node app.js",
     "test": "grunt verify --verbose"
   },
   "dependencies": {
