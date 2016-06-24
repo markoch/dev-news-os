@@ -15,6 +15,10 @@ var production = {
     seedDB: false
 };
 
+if (process.env.INIT_DB) {
+    production.seedDB = true;
+}
+
 // if OPENSHIFT env variables are present, use the available connection info:
 if (process.env.MONGOLAB_URI) {
     production.mongodb.uri = process.env.MONGOLAB_URI;
