@@ -3,8 +3,8 @@ var _ = require('lodash');
 var all = {
     // define nodejs runtime environment
     server: {
-        port :      process.env.OPENSHIFT_NODEJS_PORT || 8080,
-        host :      process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1',
+        port :      process.env.NODE_IP || 8080,  //OPENSHIFT_NODEJS_PORT
+        host :      process.env.NODE_PORT || '127.0.0.1', //OPENSHIFT_NODEJS_IP 
         staticDir : '/../../dist'
     },
 
@@ -26,7 +26,7 @@ var all = {
         }
       }
     },
-    
+
     // Should we populate the DB with sample data?
     seedDB: false
 };
