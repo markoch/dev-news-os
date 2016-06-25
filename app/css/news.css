@@ -61,6 +61,20 @@ a:hover, a:focus {
   text-decoration: none;
 }
 
+.wprofile-content a {
+  color: #EB5E26;
+  -webkit-transition: all 150ms linear;
+  -moz-transition: all 150ms linear;
+  -o-transition: all 150ms linear;
+  -ms-transition: all 150ms linear;
+  transition: all 150ms linear;
+}
+.wprofile-content a:hover, #wprofile-content a:focus {
+  color: #66615D;
+  text-decoration: none;
+}
+
+
 .follows hr {
   margin-top: 20px;
   margin-bottom: 10px;
