@@ -60,25 +60,25 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h2 class="text-center">Keep in touch?</h2>
-                <form ng-submit="addMessage()" name="messageform" class="contact-form">
+                <form ng-submit="addMessage()" name="messageform" class="contact-form" autocomplete="on">
                     <div class="row">
                         <div class="col-md-6">
-                            <label>Name</label>
-                            <input class="form-control" placeholder="Name" ng-model="messageData.user" required>
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Name" autocomplete="name" ng-model="messageData.user" required>
                         </div>
                         <div class="col-md-6">
-                            <label>Email</label>
-                            <input class="form-control" placeholder="Email" type="email" ng-model="messageData.email" required>
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Email" autocomplete="home email" ng-model="messageData.email" required>
                         </div>
                     </div>
-                    <label>Subject</label>
+                    <label for="subject">Subject</label>
                     <div class="row">
                         <div class="col-md-12">
-                            <input class="form-control" placeholder="Subject" ng-model="messageData.subject" required>
+                            <input type="text" id"subject" name="subject" class="form-control" placeholder="Subject" ng-model="messageData.subject" required>
                         </div>
                     </div>
-                    <label>Message</label>
-                    <textarea class="form-control" rows="4" placeholder="Tell us your thoughts and feelings..." ng-model="messageData.message" required></textarea>
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" class="form-control" rows="4" placeholder="Tell us your thoughts and feelings..." ng-model="messageData.message" required></textarea>
                     <div class="row">
                         <div class="col-md-4 col-md-offset-4">
                             <!-- ng-disabled="messageform.$invalid" -->
