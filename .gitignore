@@ -1,5 +1,6 @@
 bower_components
 node_modules
+backup
 
 **/npm-debug.log
 **/config.codekit
