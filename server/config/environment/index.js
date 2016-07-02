@@ -3,8 +3,8 @@ var _ = require('lodash');
 var all = {
     // define nodejs runtime environment
     server: {
-        port :      process.env.NODE_IP || 8080,          //OPENSHIFT_NODEJS_PORT
-        host :      process.env.NODE_PORT || '127.0.0.1', //OPENSHIFT_NODEJS_IP
+        port :      process.env.OPENSHIFT_NODEJS_PORT || 8080,          //OPENSHIFT_NODEJS_PORT  //NODE_IP
+        host :      process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1', //OPENSHIFT_NODEJS_IP    //NODE_PORT
         staticDir : '/../../dist'
     },
 
