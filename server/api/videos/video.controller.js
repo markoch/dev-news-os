@@ -86,9 +86,9 @@ exports.incrementCounter = function(req, res) {
   Videos.findOneAndUpdate({ _id: req.params.id },
       { $inc: { counter: 1 }},
       {new: true})
-  .exec(function(err, db_res) {
+  .exec(function(err, dbResponse) {
     if (err) { return handleError(res, err); }
-    return res.status(200).json(db_res);
+    return res.status(200).json(dbResponse);
   });
 };
 
