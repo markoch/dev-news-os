@@ -111,7 +111,7 @@ angular
 
       function loadUserCredentials() {
         var credentials = $localStorage.getObject(TOKEN_KEY,'{}');
-        if (credentials.username !== undefined) {
+        if (credentials.username) {
           useCredentials(credentials);
         }
       }
