@@ -111,7 +111,7 @@ angular
 
       function loadUserCredentials() {
         var credentials = $localStorage.getObject(TOKEN_KEY,'{}');
-        if (credentials.username !== undefined) {
+        if (credentials.username) {
           useCredentials(credentials);
         }
       }
@@ -122,7 +122,7 @@ angular
       }
 
       function destroyUserCredentials() {
-        authToken = undefined;
+        authToken = '';
         username = '';
         email = '';
         isAuthenticated = false;

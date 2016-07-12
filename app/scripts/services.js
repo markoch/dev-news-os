@@ -122,7 +122,7 @@ angular
       }
 
       function destroyUserCredentials() {
-        authToken = undefined;
+        authToken = '';
         username = '';
         email = '';
         isAuthenticated = false;
