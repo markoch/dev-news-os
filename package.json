@@ -18,7 +18,7 @@
     "express": "^4.14.0",
     "jsonwebtoken": "^7.0.x",
     "lodash": "^4.13.1",
-    "mongoose": "4.9.2",
+    "mongoose": "4.9.3",
     "morgan": "1.8.1",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
