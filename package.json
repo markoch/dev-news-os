@@ -27,7 +27,7 @@
   },
   "repository": {},
   "engines": {
-    "node": "4.x"
+     "node": ">=4"
   },
   "devDependencies": {
     "grunt": "^1.0.1",
