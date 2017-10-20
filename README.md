@@ -14,6 +14,4 @@ It can also be accessed by a mobile hybrid application. The source-code of the a
 ## License
 MIT License, see [LICENSE.txt](LICENSE.txt) for more details.
 
-Happy Hacking
-
 The Bootstrap theme is [licensed](app/css/Creative Tim License.pdf) by [Creative Tim](http://www.creative-tim.com/).
