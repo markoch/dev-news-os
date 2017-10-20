@@ -11,8 +11,6 @@ Here you will find all the information about the JavaScript News website.
 It can also be accessed by a mobile hybrid application. The source-code of the app is available at
 <a href="https://github.com/markoch/dev-news-app">GitHub</a>.
 
-My pull request test
-
 ## License
 MIT License, see [LICENSE.txt](LICENSE.txt) for more details.
 
